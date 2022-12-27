@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Timewarp</title>
+        <script defer type="module" src="./src/typescript/index.ts"></script>
+    </head>
+    <body>
+        <main>
+            <!-- login page begin -->
+            <div class="login page">
+                <div class="login__cover-image">
+                    <img src="/images/student-login-bg.jpg" alt="cover image" />
+                </div>
+
+                <form class="login__form form p-lg" method="POST">
+                    <h2 class="text-xxl mb-md">Login</h2>
+
+                    <div class="form__control">
+                        <div class="form__input-icon">
+                            <img src="/icons/email.svg" alt="user icon" />
+                        </div>
+                        <input class="form__input" type="text" placeholder="Email" />
+                    </div>
+
+                    <div class="form__control">
+                        <div class="form__input-icon">
+                            <img src="/icons/padlock.svg" alt="user icon" />
+                        </div>
+                        <input class="form__input" type="password" placeholder="Password" />
+                    </div>
+                    <p class="form__reset-link bold mb-xl">Forgot password?</p>
+
+                    <button class="btn btn--primary" type="submit">Login</button>
+                    <button class="btn btn--tertiary" type="button">
+                        <img class="btn__icon" src="/icons/google.svg" alt="google icon" />
+                        Login with Google
+                    </button>
+
+                    <p class="text-sm center">New to Time Warp? <span class="text-orange extra-bold">Sign up</span></p>
+                </form>
+            </div>
+
+            <!-- Register page begin -->
+            <div class="register page">
+                <div class="register__cover-image">
+                    <img src="/images/student-register-bg.jpg" alt="cover image" />
+                </div>
+
+                <form class="login__form form p-lg" method="POST">
+                    <h2 class="text-xxl mb-md">Sign up</h2>
+
+                    <div class="form__control">
+                        <div class="form__input-icon">
+                            <img src="/icons/user.svg" alt="user icon" />
+                        </div>
+                        <input class="form__input" type="text" placeholder="Username" />
+                    </div>
+
+                    <div class="form__control">
+                        <div class="form__input-icon">
+                            <img src="/icons/email.svg" alt="user icon" />
+                        </div>
+                        <input class="form__input" type="text" placeholder="Email" />
+                    </div>
+
+                    <div class="form__control mb-xl">
+                        <div class="form__input-icon">
+                            <img src="/icons/padlock.svg" alt="user icon" />
+                        </div>
+                        <input class="form__input" type="password" placeholder="Password" />
+                    </div>
+
+                    <button class="btn btn--primary" type="submit">Continue</button>
+
+                    <p class="text-sm center">Already use Time Warp? <span class="text-orange extra-bold">Login</span></p>
+                </form>
+            </div>
+
+            <!-- dashboard page begin -->
+            <div class="dashboard page">
+                <header class="header header--complex p-lg mb-sm">
+                    <div class="header__profile">
+                        <div class="header__profile-icon"></div>
+                        <p class="bold">Ahoy Bram!</p>
+                    </div>
+                    <div class="header__icons">
+                        <img src="/icons/logout.svg" alt="stats icon" />
+                        <img src="/icons/stats.svg" alt="logout icon" />
+                    </div>
+                </header>
+
+                <section class="dashboard__projects pi-lg mb-lg">
+                    <div class="section-header mb-lg clear-header">
+                        <div class="section-header__info">
+                            <h3 class="text-xl">Projects</h3>
+                            <p class="text-subtle">Let's finish that project today!</p>
+                        </div>
+                        <div class="section-header__action-btns">
+                            <button class="icon-btn icon-btn--secondary">
+                                <img src="/icons/plus.svg" alt="plus icon" />
+                            </button>
+                        </div>
+                    </div>
+                    <div class="dashboard__projects-overview">
+                        <div class="dashboard__overview-option dashboard__overview-option--orange">
+                            <button class="icon-btn icon-btn--secondary icon-btn--medium">
+                                <img src="/icons/arrow.svg" alt="arrow icon" />
+                            </button>
+                            <div class="dashboard__option-info">
+                                <span class="text-xxl bold text-white">12</span>
+                                <p class="text-white">In Progress</p>
+                            </div>
+                        </div>
+
+                        <div class="dashboard__overview-option dashboard__overview-option--green">
+                            <button class="icon-btn icon-btn--secondary icon-btn--medium">
+                                <img src="/icons/arrow.svg" alt="arrow icon" />
+                            </button>
+                            <div class="dashboard__option-info">
+                                <span class="text-xxl bold text-white">23</span>
+                                <p class="text-white">Completed</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="dashboard__tasks pi-lg">
+                    <div class="section-header mb-lg">
+                        <div class="section-header__info">
+                            <h3 class="text-xl text-white">Tasks</h3>
+                            <p class="text-white">Your most urgent tasks</p>
+                        </div>
+                        <div class="section-header__action-btns">
+                            <button class="menu-btn">
+                                <img src="/icons/menu.svg" alt="plus icon" />
+                            </button>
+                        </div>
+                    </div>
+                    <ul class="dashboard__task-list">
+                        <li class="dashboard__task">
+                            <h4 class="mb-xs text-lg">Design the login page</h4>
+                            <p class="text-sm text-subtle mb-lg">
+                                Brainstorm some nice layouts and make them in to low fidelity wireframes. Also make sure...
+                            </p>
+                            <div class="dashboard__task-info">
+                                <div class="dashboard__task-infopiece">
+                                    <img src="/icons/pencil.svg" alt="pencil icon" />
+                                    <span class="text-orange">3</span>
+                                </div>
+                                <div class="dashboard__task-infopiece">
+                                    <img src="/icons/timer.svg" alt="pencil icon" />
+                                    <span class="text-orange">1h 30m</span>
+                                </div>
+                            </div>
+                            <div class="dashboard__task-progress dashboard__task-progress--todo text-sm">To do</div>
+                        </li>
+
+                        <li class="dashboard__task">
+                            <h4 class="mb-xs text-lg">Add firebase auth</h4>
+                            <p class="text-sm text-subtle mb-lg">Use the firebase SDK to add authentication to the app.</p>
+                            <div class="dashboard__task-info">
+                                <div class="dashboard__task-infopiece">
+                                    <img src="/icons/pencil.svg" alt="pencil icon" />
+                                    <span class="text-orange">1</span>
+                                </div>
+                                <div class="dashboard__task-infopiece">
+                                    <img src="/icons/timer.svg" alt="pencil icon" />
+                                    <span class="text-orange">45m</span>
+                                </div>
+                            </div>
+                            <div class="dashboard__task-progress dashboard__task-progress--in-progress text-sm">In progress</div>
+                        </li>
+
+                        <li class="dashboard__task">
+                            <h4 class="mb-xs text-lg">Create the firestore DB</h4>
+                            <p class="text-sm text-subtle mb-lg">Create a db shema following the database design provided.</p>
+                            <div class="dashboard__task-info">
+                                <div class="dashboard__task-infopiece">
+                                    <img src="/icons/pencil.svg" alt="pencil icon" />
+                                    <span class="text-orange">7</span>
+                                </div>
+                                <div class="dashboard__task-infopiece">
+                                    <img src="/icons/timer.svg" alt="pencil icon" />
+                                    <span class="text-orange">2h 15m</span>
+                                </div>
+                            </div>
+                            <div class="dashboard__task-progress dashboard__task-progress--completed text-sm">Completed</div>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+
+            <!-- projects page begin -->
+            <div class="projects page page--active">
+                <header class="header p-lg">
+                    <div class="header__back-btn">
+                        <img src="/icons/chevron-left.svg" alt="" />
+                    </div>
+                    <div class="header__page-title">
+                        <p class="bold center">Projects</p>
+                    </div>
+                </header>
+
+                <section class="projects__filters clear-header pi-lg mb-md">
+                    <div class="projects__completion-filter">
+                        <div class="projects__filter-option projects__filter-option--active">
+                            <p class="bold">In progress</p>
+                        </div>
+                        <div class="projects__filter-option">
+                            <p class="bold">Completed</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="pi-lg mb-xxl">
+                    <ul class="projects__project-list">
+                        <li class="projects__project">
+                            <div class="projects__project-header mb-xs">
+                                <h3 class="text-xl">Dev quiz</h3>
+                                <div class="projects__project-deadline">
+                                    <img src="/icons/calendar.svg" alt="calender icon" />
+                                    <span class="text-orange bold">25/04</span>
+                                </div>
+                            </div>
+
+                            <p class="text-sm text-subtle mb-md">
+                                Build a dynamic quiz app with the help of an API for getting your questions and answers... <br />
+                                <span class="bold text-blue"> read more </span>
+                            </p>
+
+                            <h4 class="regular mb-xs">Project members</h4>
+                            <div class="projects__members-info mb-xs">
+                                <ul class="projects__members-list">
+                                    <li class="projects__member"></li>
+                                    <li class="projects__member"></li>
+                                    <li class="projects__member"></li>
+                                    <li class="projects__member"></li>
+                                </ul>
+                                <span>3+</span>
+                            </div>
+
+                            <div class="projects__progress-info mb-sm">
+                                <div class="projects__progress-header mb-xs">
+                                    <h4 class="regular">Project progression</h4>
+                                    <span class="bold">65%</span>
+                                </div>
+                                <div class="projects__progress-bar">
+                                    <span class="projects__progress-bar-value"></span>
+                                </div>
+                            </div>
+
+                            <div class="projects__task-overview">
+                                <span class="projects__task projects__task--todo">2</span>
+                                <span class="projects__task projects__task--in-progress">1</span>
+                                <span class="projects__task projects__task--completed">4</span>
+                            </div>
+                        </li>
+
+                        <li class="projects__project">
+                            <div class="projects__project-header mb-xs">
+                                <h3 class="text-xl">Firebase chat app</h3>
+                                <div class="projects__project-deadline">
+                                    <img src="/icons/calendar.svg" alt="calender icon" />
+                                    <span class="text-orange bold">05/02</span>
+                                </div>
+                            </div>
+
+                            <p class="text-sm text-subtle mb-md">
+                                Build a real time chat application with firebase auth and firestore for your database... <br />
+                                <span class="bold text-blue"> read more </span>
+                            </p>
+
+                            <h4 class="regular mb-xs">Project members</h4>
+                            <div class="projects__members-info mb-xs">
+                                <ul class="projects__members-list">
+                                    <li class="projects__member"></li>
+                                    <li class="projects__member"></li>
+                                    <li class="projects__member"></li>
+                                    <li class="projects__member"></li>
+                                </ul>
+                                <span>7+</span>
+                            </div>
+
+                            <div class="projects__progress-info mb-sm">
+                                <div class="projects__progress-header mb-xs">
+                                    <h4 class="regular">Project progression</h4>
+                                    <span class="bold">65%</span>
+                                </div>
+                                <div class="projects__progress-bar">
+                                    <span class="projects__progress-bar-value"></span>
+                                </div>
+                            </div>
+
+                            <div class="projects__task-overview">
+                                <span class="projects__task projects__task--todo">0</span>
+                                <span class="projects__task projects__task--in-progress">5</span>
+                                <span class="projects__task projects__task--completed">1</span>
+                            </div>
+                        </li>
+
+                        <li class="projects__project">
+                            <div class="projects__project-header mb-xs">
+                                <h3 class="text-xl">Dev quiz</h3>
+                                <div class="projects__project-deadline">
+                                    <img src="/icons/calendar.svg" alt="calender icon" />
+                                    <span class="text-orange bold">25/04</span>
+                                </div>
+                            </div>
+
+                            <p class="text-sm text-subtle mb-md">
+                                Build a dynamic quiz app with the help of an API for getting your questions and answers... <br />
+                                <span class="bold text-blue"> read more </span>
+                            </p>
+
+                            <h4 class="regular mb-xs">Project members</h4>
+                            <div class="projects__members-info mb-xs">
+                                <ul class="projects__members-list">
+                                    <li class="projects__member"></li>
+                                    <li class="projects__member"></li>
+                                    <li class="projects__member"></li>
+                                    <li class="projects__member"></li>
+                                </ul>
+                                <span>3+</span>
+                            </div>
+
+                            <div class="projects__progress-info mb-sm">
+                                <div class="projects__progress-header mb-xs">
+                                    <h4 class="regular">Project progression</h4>
+                                    <span class="bold">65%</span>
+                                </div>
+                                <div class="projects__progress-bar">
+                                    <span class="projects__progress-bar-value"></span>
+                                </div>
+                            </div>
+
+                            <div class="projects__task-overview">
+                                <span class="projects__task projects__task--todo">2</span>
+                                <span class="projects__task projects__task--in-progress">1</span>
+                                <span class="projects__task projects__task--completed">4</span>
+                            </div>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+
+            <!-- project details page begin -->
+            <div class="project page">
+                <header class="header p-lg mb-sm">
+                    <div class="header__back-btn">
+                        <img src="/icons/chevron-left.svg" alt="" />
+                    </div>
+                    <div class="header__page-title">
+                        <p class="bold center">Project details</p>
+                    </div>
+                </header>
+            </div>
+
+            <!-- task details page begin -->
+            <div class="task page">
+                <header class="header p-lg mb-sm">
+                    <div class="header__back-btn">
+                        <img src="/icons/chevron-left.svg" alt="" />
+                    </div>
+                    <div class="header__page-title">
+                        <p class="bold center">Task details</p>
+                    </div>
+                </header>
+            </div>
+        </main>
+    </body>
+</html>

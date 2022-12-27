@@ -1,0 +1,97 @@
+.dashboard {
+    &__projects-overview {
+        display: flex;
+        align-items: center;
+        gap: var(--space-md);
+    }
+
+    &__overview-option {
+        width: 50%;
+        padding: var(--space-sm);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        aspect-ratio: 1 /1;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+
+        button {
+            align-self: flex-end;
+        }
+
+        &--orange {
+            background-color: var(--orange-900);
+            background-image: url("/images/orange-lines.png");
+        }
+
+        &--green {
+            background-color: var(--green-700);
+            background-image: url("/images/green-lines.png");
+        }
+    }
+
+    &__tasks {
+        padding-block: var(--space-sm) var(--space-md);
+        background-color: var(--blue-900);
+    }
+
+    &__task-list {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-md);
+    }
+
+    &__task {
+        position: relative;
+        background-color: var(--white);
+        border: 1px solid var(--grey-300);
+        padding: var(--space-sm);
+    }
+
+    &__task-info {
+        display: flex;
+        align-items: center;
+        gap: var(--space-md);
+    }
+
+    &__task-infopiece {
+        display: flex;
+        align-items: center;
+        gap: var(--space-xs);
+
+        img {
+            width: 20px;
+            height: 20px;
+        }
+    }
+
+    &__task-progress {
+        position: absolute;
+        bottom: var(--space-xs);
+        right: -1px;
+        padding-block: var(--space-xxxs) var(--space-xxs);
+        display: flex;
+        justify-content: center;
+        width: 7rem;
+        z-index: 10;
+
+        &--todo {
+            background-color: var(--grey-300);
+            border: 1px solid var(--grey-500);
+            color: var(--grey-700);
+        }
+
+        &--in-progress {
+            background-color: var(--orange-900);
+            border: 1px solid var(--orange-700);
+            color: var(--white);
+        }
+
+        &--completed {
+            background-color: var(--green-700);
+            border: 1px solid var(--green-900);
+            color: var(--white);
+        }
+    }
+}

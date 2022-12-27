@@ -1,0 +1,46 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+
+    &__control {
+        display: flex;
+        height: 50px;
+    }
+
+    &__input-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--blue-900);
+        padding: var(--space-xs) var(--space-md);
+
+        img {
+            height: 1.5625rem;
+            aspect-ratio: 1 / 1;
+        }
+    }
+
+    &__input {
+        background-color: var(--grey-300);
+        border: 1px solid var(--grey-300);
+        outline: none;
+        padding-left: var(--space-md);
+        flex: 1;
+
+        &:focus,
+        &:active {
+            border: 1px solid var(--blue-900);
+        }
+
+        &::placeholder {
+            font-family: var(--font);
+            font-size: var(--text-md);
+            color: var(--grey-700);
+        }
+    }
+
+    &__reset-link {
+        align-self: flex-end;
+    }
+}
