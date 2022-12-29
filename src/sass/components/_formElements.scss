@@ -1,11 +1,13 @@
 .form {
     display: flex;
     flex-direction: column;
-    gap: var(--space-sm);
 
     &__control {
         display: flex;
-        height: 50px;
+
+        &--gap {
+            gap: var(--space-sm);
+        }
     }
 
     &__input-icon {
@@ -23,10 +25,22 @@
 
     &__input {
         background-color: var(--grey-300);
-        border: 1px solid var(--grey-300);
+        border: 1px solid var(--grey-500);
         outline: none;
-        padding-left: var(--space-md);
+        height: 50px;
+        padding-inline: var(--space-md);
         flex: 1;
+        font-size: var(--text-md);
+        color: var(--grey-700);
+        transition: border ease 0.2s;
+
+        &--small {
+            max-width: 12.5rem;
+        }
+
+        &--light {
+            background-color: var(--white);
+        }
 
         &:focus,
         &:active {
@@ -40,7 +54,85 @@
         }
     }
 
+    &__textarea {
+        outline: none;
+        border: 1px solid var(--grey-500);
+        background-color: var(--grey-300);
+        height: 7.5rem;
+        padding: var(--space-sm);
+        resize: none;
+        width: 100%;
+        font-size: var(--text-md);
+        color: var(--grey-700);
+
+        &::placeholder {
+            font-family: var(--font);
+            font-size: var(--text-md);
+            color: var(--grey-700);
+        }
+
+        &:focus,
+        &:active {
+            border: 1px solid var(--blue-900);
+        }
+    }
+
     &__reset-link {
         align-self: flex-end;
+    }
+
+    &__dropdown {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: 12.5rem;
+
+        &--open {
+            .form__dropdown-selected img {
+                transform: rotate(0deg);
+            }
+
+            .form__dropdown-list {
+                display: flex;
+            }
+        }
+    }
+
+    &__dropdown-selected {
+        background-color: var(--grey-300);
+        border: 1px solid var(--grey-500);
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-inline: var(--space-md);
+        color: var(--grey-700);
+
+        img {
+            width: 15px;
+            transform: rotate(180deg);
+            margin-top: var(--space-xxxs);
+        }
+    }
+
+    &__dropdown-list {
+        position: absolute;
+        top: 62px;
+        left: 0;
+        width: 12.5rem;
+        display: none;
+        flex-direction: column;
+        background-color: var(--grey-300);
+        border: 1px solid var(--grey-500);
+    }
+
+    &__dropdown-option {
+        padding: var(--space-xs) var(--space-md);
+        color: var(--grey-700);
+
+        &--selected {
+            background-color: var(--blue-900);
+            color: var(--white);
+        }
     }
 }

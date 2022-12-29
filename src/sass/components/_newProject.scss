@@ -1,0 +1,17 @@
+.new-project {
+    &__add-collaborator {
+        display: flex;
+        align-items: center;
+        gap: var(--space-md);
+    }
+
+    &__deadline {
+        display: flex;
+        align-items: center;
+        gap: var(--space-sm);
+
+        input {
+            width: 100%;
+        }
+    }
+}

@@ -11,11 +11,20 @@
     --text-xxxl: 3.5rem;
 }
 
-body {
+body,
+form,
+input,
+textarea {
     font-family: var(--font);
     font-size: var(--text-md);
     color: var(--blue-900);
     font-weight: 300;
+}
+
+.number {
+    font-size: var(--text-xxxl);
+    font-weight: 600;
+    color: var(--white);
 }
 
 h1,
@@ -78,4 +87,8 @@ h6,
 
 .center {
     text-align: center;
+}
+
+.upper {
+    text-transform: uppercase;
 }
