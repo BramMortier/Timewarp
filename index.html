@@ -12,26 +12,31 @@
             <!-- PAGES -->
 
             <!-- login page begin -->
-            <div class="login page">
+            <div id="login-page" class="login page">
                 <div class="login__cover-image">
                     <img src="/images/student-login-bg.jpg" alt="cover image" />
                 </div>
 
-                <form class="login__form form p-lg" method="POST">
+                <form id="login-form" class="login__form form p-lg" method="POST">
                     <h2 class="text-xxl mb-xl">Login</h2>
+
+                    <div class="form__errors mb-sm">
+                        <span class="error text-sm">A random error occured!</span>
+                        <span class="error text-sm">Oops and another error occured!</span>
+                    </div>
 
                     <div class="form__control mb-sm">
                         <div class="form__input-icon">
                             <img src="/icons/email.svg" alt="user icon" />
                         </div>
-                        <input class="form__input" type="text" placeholder="Email" />
+                        <input class="form__input" type="text" placeholder="Email" name="email" />
                     </div>
 
                     <div class="form__control mb-sm">
                         <div class="form__input-icon">
                             <img src="/icons/padlock.svg" alt="user icon" />
                         </div>
-                        <input class="form__input" type="password" placeholder="Password" />
+                        <input class="form__input" type="password" placeholder="Password" name="password" />
                     </div>
                     <p class="form__reset-link bold mb-xl">Forgot password?</p>
 
@@ -46,33 +51,44 @@
             </div>
 
             <!-- Register page begin -->
-            <div class="register page">
+            <div id="register-page" class="register page">
                 <div class="register__cover-image">
                     <img src="/images/student-register-bg.jpg" alt="cover image" />
                 </div>
 
-                <form class="login__form form p-lg" method="POST">
+                <form id="signup-form" class="register__form form p-lg" method="POST">
                     <h2 class="text-xxl mb-xl">Sign up</h2>
+
+                    <div class="form__errors mb-sm">
+                        <span class="error text-sm">A random error occured!</span>
+                        <span class="error text-sm">Oops and another error occured!</span>
+                    </div>
 
                     <div class="form__control mb-sm">
                         <div class="form__input-icon">
                             <img src="/icons/user.svg" alt="user icon" />
                         </div>
-                        <input class="form__input" type="text" placeholder="Username" />
+                        <input class="form__input" type="text" placeholder="Username" name="username" />
                     </div>
 
                     <div class="form__control mb-sm">
                         <div class="form__input-icon">
                             <img src="/icons/email.svg" alt="user icon" />
                         </div>
-                        <input class="form__input" type="text" placeholder="Email" />
+                        <input class="form__input" type="text" placeholder="Email" name="email" />
                     </div>
 
-                    <div class="form__control mb-xl">
+                    <div class="form__control mb-xs">
                         <div class="form__input-icon">
                             <img src="/icons/padlock.svg" alt="user icon" />
                         </div>
-                        <input class="form__input" type="password" placeholder="Password" />
+                        <input id="new-password-input" class="form__input" type="password" placeholder="Password" name="password" />
+                    </div>
+
+                    <div id="password-security-bars" class="form__password-security mb-xl">
+                        <span class="form__security-bar"></span>
+                        <span class="form__security-bar"></span>
+                        <span class="form__security-bar"></span>
                     </div>
 
                     <button class="btn btn--primary mb-sm" type="submit">Continue</button>
@@ -82,14 +98,14 @@
             </div>
 
             <!-- dashboard page begin -->
-            <div class="dashboard page page--active">
+            <div id="dashboard-page" class="dashboard page page--active">
                 <header class="header header--complex p-lg mb-sm">
                     <div class="header__profile">
                         <div class="header__profile-icon"></div>
                         <p class="bold">Ahoy Bram!</p>
                     </div>
                     <div class="header__icons">
-                        <img src="/icons/logout.svg" alt="stats icon" />
+                        <img id="logout-btn" src="/icons/logout.svg" alt="stats icon" />
                         <img src="/icons/stats.svg" alt="logout icon" />
                     </div>
                 </header>
@@ -101,13 +117,13 @@
                             <p class="text-subtle">Let's finish that project today!</p>
                         </div>
                         <div class="section-header__action-btns">
-                            <button class="icon-btn icon-btn--secondary">
+                            <button class="new-project-btn icon-btn icon-btn--secondary">
                                 <img src="/icons/plus.svg" alt="plus icon" />
                             </button>
                         </div>
                     </div>
                     <div class="dashboard__projects-overview">
-                        <div class="dashboard__overview-option dashboard__overview-option--orange">
+                        <div id="in-progress-projects-btn" class="dashboard__overview-option dashboard__overview-option--orange">
                             <button class="icon-btn icon-btn--secondary icon-btn--medium">
                                 <img src="/icons/arrow.svg" alt="arrow icon" />
                             </button>
@@ -117,7 +133,7 @@
                             </div>
                         </div>
 
-                        <div class="dashboard__overview-option dashboard__overview-option--green">
+                        <div id="completed-projects-btn" class="dashboard__overview-option dashboard__overview-option--green">
                             <button class="icon-btn icon-btn--secondary icon-btn--medium">
                                 <img src="/icons/arrow.svg" alt="arrow icon" />
                             </button>
@@ -196,9 +212,9 @@
             </div>
 
             <!-- projects page begin -->
-            <div class="projects page">
+            <div id="projects-page" class="projects page">
                 <header class="header p-lg">
-                    <div class="header__back-btn">
+                    <div id="projects-back-btn" class="header__back-btn">
                         <img src="/icons/chevron-left.svg" alt="" />
                     </div>
                     <div class="header__page-title">
@@ -217,8 +233,8 @@
                     </div>
                 </section>
 
-                <section class="pi-lg mb-xxl">
-                    <ul class="projects__project-list">
+                <section class="pi-lg">
+                    <ul class="projects__project-list mb-xl">
                         <li class="projects__project">
                             <div class="projects__project-header mb-xs">
                                 <h3 class="text-xl">Dev quiz</h3>
@@ -345,11 +361,17 @@
                             </div>
                         </li>
                     </ul>
+
+                    <div class="projects__options mb-xxl">
+                        <button class="icon-btn icon-btn--large icon-btn--secondary">
+                            <img src="/icons/plus.svg" alt="plus icon" />
+                        </button>
+                    </div>
                 </section>
             </div>
 
             <!-- project details page begin -->
-            <div class="project page">
+            <div id="project-page" class="project page">
                 <header class="header p-lg mb-sm">
                     <div class="header__back-btn">
                         <img src="/icons/chevron-left.svg" alt="" />
@@ -513,7 +535,7 @@
             </div>
 
             <!-- task details page begin -->
-            <div class="task page">
+            <div id="task-page" class="task page">
                 <header class="header p-lg mb-sm">
                     <div class="header__back-btn">
                         <img src="/icons/chevron-left.svg" alt="" />
@@ -583,12 +605,17 @@
                 </section>
             </div>
 
-            <!-- POPUPS -->
+            <!-- MODALS -->
 
             <!-- new project page begin -->
-            <div class="new-project overlay">
+            <div id="new-project-overlay" class="new-project overlay">
                 <div class="overlay__content">
-                    <h3 class="overlay__title text-xl">New Project</h3>
+                    <div class="overlay__header">
+                        <h3 class="text-xl">New Project</h3>
+                        <button class="close-modal-btn icon-btn icon-btn--secondary">
+                            <img src="/icons/plus.svg" alt="arrow icon" />
+                        </button>
+                    </div>
                     <form class="form">
                         <h4 class="mb-sm">General info</h4>
                         <div class="form__control mb-sm">
@@ -620,10 +647,15 @@
                 </div>
             </div>
 
-            <!-- new project page begin -->
-            <div class="new-project overlay">
+            <!-- new task page begin -->
+            <div id="new-task-overlay" class="new-task overlay">
                 <div class="overlay__content">
-                    <h3 class="overlay__title text-xl">New Task</h3>
+                    <div class="overlay__header">
+                        <h3 class="text-xl">New Task</h3>
+                        <button class="close-modal-btn icon-btn icon-btn--secondary">
+                            <img src="/icons/plus.svg" alt="arrow icon" />
+                        </button>
+                    </div>
                     <form class="form">
                         <h4 class="mb-sm">General info</h4>
                         <div class="form__control mb-sm">
@@ -655,6 +687,20 @@
                         <button class="btn btn--secondary">Add</button>
                     </form>
                 </div>
+            </div>
+
+            <!-- PAGE TRANSITION -->
+
+            <!-- default transition -->
+            <div class="page-transition">
+                <span class="tile"></span>
+                <span class="tile"></span>
+                <span class="tile"></span>
+                <span class="tile"></span>
+                <span class="tile"></span>
+                <span class="tile"></span>
+                <span class="tile"></span>
+                <span class="tile"></span>
             </div>
         </main>
     </body>

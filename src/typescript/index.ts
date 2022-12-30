@@ -1,4 +1,8 @@
 import "../sass/style.scss";
+
+import "./firebase/firebase";
+import "./lib/events";
+
 import { headers } from "./lib/constants";
 
 let lastScrollTop = 0;

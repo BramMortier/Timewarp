@@ -118,4 +118,9 @@
             border: 1px solid var(--green-900);
         }
     }
+
+    &__options {
+        display: flex;
+        justify-content: flex-end;
+    }
 }
