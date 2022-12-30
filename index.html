@@ -12,7 +12,7 @@
             <!-- PAGES -->
 
             <!-- login page begin -->
-            <div id="login-page" class="login page">
+            <div id="login-page" class="login page page--active">
                 <div class="login__cover-image">
                     <img src="/images/student-login-bg.jpg" alt="cover image" />
                 </div>
@@ -20,7 +20,7 @@
                 <form id="login-form" class="login__form form p-lg" method="POST">
                     <h2 class="text-xxl mb-xl">Login</h2>
 
-                    <div class="form__errors mb-sm">
+                    <div id="login-form-errors" class="form__errors mb-sm">
                         <span class="error text-sm">A random error occured!</span>
                         <span class="error text-sm">Oops and another error occured!</span>
                     </div>
@@ -46,7 +46,7 @@
                         Login with Google
                     </button>
 
-                    <p class="text-sm center">New to Time Warp? <span class="text-orange extra-bold">Sign up</span></p>
+                    <p class="text-sm center">New to Time Warp? <span id="login-form-link" class="text-orange extra-bold">Sign up</span></p>
                 </form>
             </div>
 
@@ -59,7 +59,7 @@
                 <form id="signup-form" class="register__form form p-lg" method="POST">
                     <h2 class="text-xxl mb-xl">Sign up</h2>
 
-                    <div class="form__errors mb-sm">
+                    <div id="signup-form-errors" class="form__errors mb-sm">
                         <span class="error text-sm">A random error occured!</span>
                         <span class="error text-sm">Oops and another error occured!</span>
                     </div>
@@ -93,12 +93,12 @@
 
                     <button class="btn btn--primary mb-sm" type="submit">Continue</button>
 
-                    <p class="text-sm center">Already use Time Warp? <span class="text-orange extra-bold">Login</span></p>
+                    <p class="text-sm center">Already use Time Warp? <span id="signup-form-link" class="text-orange extra-bold">Login</span></p>
                 </form>
             </div>
 
             <!-- dashboard page begin -->
-            <div id="dashboard-page" class="dashboard page page--active">
+            <div id="dashboard-page" class="dashboard page">
                 <header class="header header--complex p-lg mb-sm">
                     <div class="header__profile">
                         <div class="header__profile-icon"></div>
@@ -363,7 +363,7 @@
                     </ul>
 
                     <div class="projects__options mb-xxl">
-                        <button class="icon-btn icon-btn--large icon-btn--secondary">
+                        <button class="new-project-btn icon-btn icon-btn--large icon-btn--secondary">
                             <img src="/icons/plus.svg" alt="plus icon" />
                         </button>
                     </div>

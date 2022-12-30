@@ -1,6 +1,6 @@
 // ------------------------------------------- //
 // module imports
-import { login, signUp } from "../firebase/auth";
+import { login, logout, signUp } from "../firebase/auth";
 import {
     projectsPage,
     completedProjectsBtn,
@@ -15,6 +15,9 @@ import {
     signUpForm,
     loginForm,
     newPasswordInput,
+    signUpFormLink,
+    signUpPage,
+    loginFormLink,
 } from "./constants";
 import { closeModal, navigate, openModal } from "./router";
 import { checkPasswordSecurity } from "./validation";
@@ -33,6 +36,7 @@ projectBackBtn.addEventListener("click", (): void => {
 });
 
 logoutBtn.addEventListener("click", (): void => {
+    logout();
     navigate(loginPage);
 });
 
@@ -58,4 +62,12 @@ newPasswordInput.addEventListener("input", (): void => {
 
 loginForm.addEventListener("submit", (e: Event): void => {
     login(e);
+});
+
+signUpFormLink.addEventListener("click", (): void => {
+    navigate(loginPage);
+});
+
+loginFormLink.addEventListener("click", (): void => {
+    navigate(signUpPage);
 });

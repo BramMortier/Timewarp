@@ -4,16 +4,23 @@ import { modals, pages } from "./constants";
 import { pageTransition } from "../animations/pageTransition";
 // ------------------------------------------- //
 
-export const navigate = (destinationPage: HTMLElement): void => {
-    pageTransition();
+export const navigate = (destinationPage: HTMLElement, disableAnimate?: boolean): void => {
+    if (!disableAnimate) {
+        pageTransition();
+        setTimeout(() => {
+            switchPage(destinationPage);
+        }, 650);
+    } else {
+        switchPage(destinationPage);
+    }
+};
 
-    setTimeout(() => {
-        destinationPage.classList.add("page--active");
+export const switchPage = (destinationPage: HTMLElement): void => {
+    destinationPage.classList.add("page--active");
 
-        pages.forEach((page: HTMLElement): void => {
-            if (page !== destinationPage) page.classList.remove("page--active");
-        });
-    }, 650);
+    pages.forEach((page: HTMLElement): void => {
+        if (page !== destinationPage) page.classList.remove("page--active");
+    });
 };
 
 export const openModal = (targetModal: HTMLElement): void => {
