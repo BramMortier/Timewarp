@@ -1,4 +1,7 @@
+// ------------------------------------------- //
+// module imports
 import { newPasswordInput, passwordSecurityBars } from "./constants";
+// ------------------------------------------- //
 
 export const notEmpty = (str: string): boolean => {
     return str !== "";

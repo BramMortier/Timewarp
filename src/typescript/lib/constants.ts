@@ -29,6 +29,7 @@ export const tiles = Array.from(document.querySelectorAll(".tile")) as HTMLEleme
 export const loginForm = document.getElementById("login-form") as HTMLFormElement;
 export const loginFormErrors = document.getElementById("login-form-errors") as HTMLElement;
 export const loginFormLink = document.getElementById("login-form-link") as HTMLElement;
+export const loginWithGoogleBtn = document.getElementById("google-auth-btn") as HTMLElement;
 export const signUpForm = document.getElementById("signup-form") as HTMLFormElement;
 export const signUpFormErrors = document.getElementById("signup-form-errors") as HTMLElement;
 export const signUpFormLink = document.getElementById("signup-form-link") as HTMLElement;
