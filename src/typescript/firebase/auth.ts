@@ -9,6 +9,7 @@ import {
     signInWithRedirect,
     UserCredential,
 } from "firebase/auth";
+import { Timestamp } from "firebase/firestore";
 import { dashboardPage, loginForm, loginFormErrors, loginPage, signUpForm, signUpFormErrors } from "../lib/constants";
 import { navigate } from "../lib/router";
 import { notEmpty, safeLength, validateEmail } from "../lib/validation";
@@ -60,6 +61,7 @@ export const signUp = async (e: Event): Promise<void> => {
                 createUser({
                     userId: userCredential.user.uid,
                     username: username,
+                    createdAt: Timestamp.now(),
                 });
                 signUpForm.reset();
             }

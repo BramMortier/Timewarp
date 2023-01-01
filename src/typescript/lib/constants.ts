@@ -36,3 +36,5 @@ export const signUpFormLink = document.getElementById("signup-form-link") as HTM
 
 export const newPasswordInput = document.getElementById("new-password-input") as HTMLInputElement;
 export const passwordSecurityBars = document.getElementById("password-security-bars") as HTMLElement;
+
+export const projectsList = document.getElementById("projects-list") as HTMLElement;

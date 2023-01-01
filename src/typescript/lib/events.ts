@@ -1,6 +1,7 @@
 // ------------------------------------------- //
 // module imports
 import { login, loginWithGoogle, logout, signUp } from "../firebase/auth";
+import { getProjects } from "../firebase/database/projects";
 import {
     projectsPage,
     completedProjectsBtn,
@@ -25,6 +26,7 @@ import { checkPasswordSecurity } from "./validation";
 // ------------------------------------------- //
 
 completedProjectsBtn.addEventListener("click", (): void => {
+    getProjects();
     navigate(projectsPage);
 });
 
