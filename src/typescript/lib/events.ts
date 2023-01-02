@@ -1,5 +1,6 @@
 // ------------------------------------------- //
 // module imports
+import { addCollaborator, addProject } from "../components/newProject";
 import { login, loginWithGoogle, logout, signUp } from "../firebase/auth";
 import { getProjects } from "../firebase/database/projects";
 import {
@@ -20,6 +21,10 @@ import {
     signUpPage,
     loginFormLink,
     loginWithGoogleBtn,
+    addCollaboratorBtn,
+    newProjectCollaboratorsList,
+    createProjectBtn,
+    newProjectForm,
 } from "./constants";
 import { closeModal, navigate, openModal } from "./router";
 import { checkPasswordSecurity } from "./validation";
@@ -45,8 +50,18 @@ logoutBtn.addEventListener("click", (): void => {
 
 newProjectBtns.forEach((newProjectBtn: HTMLElement): void => {
     newProjectBtn.addEventListener("click", (): void => {
+        newProjectForm.reset();
+        newProjectCollaboratorsList.innerHTML = "";
         openModal(newProjectModal);
     });
+});
+
+addCollaboratorBtn.addEventListener("click", (): void => {
+    addCollaborator();
+});
+
+createProjectBtn.addEventListener("click", (e: Event): void => {
+    addProject(e);
 });
 
 closeModalBtns.forEach((closeModalBtn: HTMLElement): void => {

@@ -1,7 +1,21 @@
 // ------------------------------------------- //
 // module imports
 import { db } from "./database";
-import { setDoc, doc, Timestamp, getDoc } from "firebase/firestore";
+import {
+    setDoc,
+    doc,
+    Timestamp,
+    getDoc,
+    collection,
+    where,
+    query,
+    Query,
+    DocumentData,
+    limit,
+    getDocs,
+    QuerySnapshot,
+    CollectionReference,
+} from "firebase/firestore";
 // ------------------------------------------- //
 
 export type User = {
@@ -19,4 +33,14 @@ export const createUser = async (data: User): Promise<void> => {
 
 export const getUser = async (userId: string): Promise<any> => {
     return await getDoc(doc(db, "users", userId));
+};
+
+export const checkMember = async (member: string): Promise<boolean> => {
+    const usersRef: CollectionReference<DocumentData> = collection(db, "users");
+    const stmt: Query<DocumentData> = query(usersRef, where("username", "==", member), limit(1));
+
+    const querySnapshot: QuerySnapshot<DocumentData> = await getDocs(stmt);
+
+    if (querySnapshot.empty) return false;
+    return true;
 };

@@ -24,3 +24,8 @@ export const timestampToDate = (timestamp: Timestamp): string => {
 
     return dateString;
 };
+
+export const dayMonthYearToTimestamp = (day: number, month: number, year: number): Timestamp => {
+    const date = new Date(year, month - 1, day);
+    return Timestamp.fromDate(date);
+};

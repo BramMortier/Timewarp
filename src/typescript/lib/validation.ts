@@ -1,10 +1,15 @@
 // ------------------------------------------- //
 // module imports
+import { checkMember } from "../firebase/database/users";
 import { newPasswordInput, passwordSecurityBars } from "./constants";
 // ------------------------------------------- //
 
 export const notEmpty = (str: string): boolean => {
     return str !== "";
+};
+
+export const isNumber = (value: number | string | boolean): boolean => {
+    return typeof value === "number";
 };
 
 export const safeLength = (minlength: number, str: string) => {
@@ -15,6 +20,14 @@ export const validateEmail = (email: string): boolean => {
     const re =
         /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);
+};
+
+export const validateMembers = async (members: string[]): Promise<boolean> => {
+    const valid = members.every(async (member: string): Promise<boolean> => {
+        console.log(`${await checkMember(member)} | ${true}`);
+        return (await checkMember(member)) === true;
+    });
+    return valid;
 };
 
 export const checkPasswordSecurity = () => {

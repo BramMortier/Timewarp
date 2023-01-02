@@ -39,7 +39,7 @@ export const renderProjectCard = (id: string, data: any): void => {
                 <span class="bold">${updateProjectProgress(data.taskOverview)}%</span>
             </div>
             <div class="projects__progress-bar">
-                <span class="projects__progress-bar-value"></span>
+                <span style="width: ${updateProjectProgress(data.taskOverview)}%" class="projects__progress-bar-value"></span>
             </div>
         </div>
 
@@ -67,5 +67,6 @@ export const renderMembersList = (membersList: string[]): string => {
 };
 
 export const updateProjectProgress = (tasks: number[]): number => {
+    if (tasks.every((task) => task == 0)) return 0;
     return Math.floor((tasks[2] / tasks.reduce((a: number, b: number): number => a + b)) * 100);
 };

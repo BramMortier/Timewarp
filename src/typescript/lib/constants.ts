@@ -30,9 +30,19 @@ export const loginForm = document.getElementById("login-form") as HTMLFormElemen
 export const loginFormErrors = document.getElementById("login-form-errors") as HTMLElement;
 export const loginFormLink = document.getElementById("login-form-link") as HTMLElement;
 export const loginWithGoogleBtn = document.getElementById("google-auth-btn") as HTMLElement;
+
 export const signUpForm = document.getElementById("signup-form") as HTMLFormElement;
 export const signUpFormErrors = document.getElementById("signup-form-errors") as HTMLElement;
 export const signUpFormLink = document.getElementById("signup-form-link") as HTMLElement;
+
+export const newProjectForm = document.getElementById("new-project-form") as HTMLFormElement;
+export const newProjectFormErrors = document.getElementById("new-project-form-errors") as HTMLElement;
+export const newProjectSuccesMessage = document.getElementById("new-project-succes-message") as HTMLElement;
+export const newProjectCollaboratorsList = document.getElementById("new-project-collaborators-list") as HTMLElement;
+export const addCollaboratorBtn = document.getElementById("add-collaborator-btn") as HTMLElement;
+export const createProjectBtn = document.getElementById("create-project-btn") as HTMLElement;
+
+export const newTaskForm = document.getElementById("new-task-form") as HTMLFormElement;
 
 export const newPasswordInput = document.getElementById("new-password-input") as HTMLInputElement;
 export const passwordSecurityBars = document.getElementById("password-security-bars") as HTMLElement;

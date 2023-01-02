@@ -610,33 +610,39 @@
                             <img src="/icons/plus.svg" alt="arrow icon" />
                         </button>
                     </div>
-                    <form class="form">
+                    <form id="new-project-form" class="form">
+                        <div id="new-project-succes-message" class="form__succes mb-sm">
+                            <span class="text-green text-sm">Created project succesfully!</span>
+                        </div>
+                        <div id="new-project-form-errors" class="form__errors mb-sm"></div>
+
                         <h4 class="mb-sm">General info</h4>
                         <div class="form__control mb-sm">
-                            <input type="text" class="form__input" placeholder="Project name" />
+                            <input type="text" class="form__input" placeholder="Project name" name="projectName" />
                         </div>
                         <div class="form__control mb-lg">
-                            <textarea class="form__textarea" placeholder="Description"></textarea>
+                            <textarea class="form__textarea" placeholder="Description" name="description"></textarea>
                         </div>
 
                         <h4 class="mb-sm">Add collaborators</h4>
                         <div class="new-project__collaborators mb-lg">
                             <div class="new-project__add-collaborator">
-                                <button class="icon-btn icon-btn--rounded icon-btn--primary icon-btn--large">
+                                <button type="button" id="add-collaborator-btn" class="icon-btn icon-btn--rounded icon-btn--primary icon-btn--large">
                                     <img src="/icons/plus.svg" alt="plus icon" />
                                 </button>
                                 <p class="text-subtle">Add new collaborator</p>
                             </div>
+                            <ul id="new-project-collaborators-list" class="new-project__collaborators-list"></ul>
                         </div>
 
                         <h4 class="mb-sm">Project deadline</h4>
                         <div class="new-project__deadline mb-xxl">
-                            <input type="text" class="form__input" placeholder="Day" />
-                            <input type="text" class="form__input" placeholder="Month" />
-                            <input type="text" class="form__input" placeholder="Year" />
+                            <input type="number" class="form__input" placeholder="Day" name="day" />
+                            <input type="number" class="form__input" placeholder="Month" name="month" />
+                            <input type="number" class="form__input" placeholder="Year" name="year" />
                         </div>
 
-                        <button class="btn btn--secondary">Create</button>
+                        <button id="create-project-btn" type="submit" class="btn btn--secondary">Create</button>
                     </form>
                 </div>
             </div>
@@ -650,7 +656,9 @@
                             <img src="/icons/plus.svg" alt="arrow icon" />
                         </button>
                     </div>
-                    <form class="form">
+                    <form id="new-task-form" class="form">
+                        <div id="login-form-errors" class="form__errors mb-sm"></div>
+
                         <h4 class="mb-sm">General info</h4>
                         <div class="form__control mb-sm">
                             <input type="text" class="form__input" placeholder="Task name" />

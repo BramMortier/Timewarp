@@ -148,6 +148,18 @@
         }
     }
 
+    &__succes {
+        background-color: var(--green-100);
+        border: 1px solid var(--green-900);
+        padding: var(--space-sm);
+        display: none;
+        flex-direction: column;
+
+        &--active {
+            display: flex;
+        }
+    }
+
     &__password-security {
         display: flex;
         align-items: center;
@@ -168,4 +180,9 @@
 #signup-form-link,
 #login-form-link {
     cursor: pointer;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
 }

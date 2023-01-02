@@ -37,6 +37,10 @@
     height: 35px;
     padding: calc(var(--space-xs) + 2px);
 
+    &--close img {
+        transform: rotate(45deg);
+    }
+
     &--primary {
         background-color: var(--orange-900);
     }
