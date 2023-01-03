@@ -1,6 +1,9 @@
 // ------------------------------------------- //
 // module imports
-import { projectPage, projectsList } from "../lib/constants";
+import { DocumentData } from "firebase/firestore";
+import { getProject } from "../firebase/database/projects";
+import { getTasks } from "../firebase/database/tasks";
+import { projectInfo, projectPage, projectsList } from "../lib/constants";
 import { timestampToDate } from "../lib/dateFormatting";
 import { navigate } from "../lib/router";
 // ------------------------------------------- //
@@ -8,8 +11,7 @@ import { navigate } from "../lib/router";
 export const renderProjectCard = (id: string, data: any): void => {
     let projectCardEl: HTMLElement = document.createElement("li");
     projectCardEl.classList.add("projects__project");
-
-    console.log(data, id);
+    projectCardEl.setAttribute("data-id", id);
 
     projectCardEl.innerHTML = `
         <div class="projects__project-header mb-xs">
@@ -28,7 +30,7 @@ export const renderProjectCard = (id: string, data: any): void => {
         <h4 class="mb-xs">Project members</h4>
         <div class="projects__members-info mb-xs">
             <ul class="projects__members-list">
-                ${renderMembersList(data.members)}
+                ${renderMembersList(data.members, "small")}
             </ul>
             <span>${data.members.length > 4 ? `${data.members.length - 4}+` : ""}</span>
         </div>
@@ -50,18 +52,47 @@ export const renderProjectCard = (id: string, data: any): void => {
         </div>
     `;
 
-    projectCardEl.addEventListener("click", (): void => {
+    projectCardEl.addEventListener("click", async (): Promise<void> => {
+        const projectData: DocumentData = await getProject(id);
+        renderProjectInfo(projectData);
+        getTasks(id);
         navigate(projectPage);
     });
 
     projectsList.appendChild(projectCardEl);
 };
 
-export const renderMembersList = (membersList: string[]): string => {
+export const renderProjectInfo = (data: any): void => {
+    projectInfo.innerHTML = `
+        <div class="project__general-header mb-md">
+            <h3 class="text-xl">${data.title}</h3>
+            <div class="project__deadline">
+                <img src="/icons/calendar.svg" alt="calendar icon" />
+                <span class="text-orange bold">25/04</span>
+            </div>
+        </div>
+
+        <h4 class="mb-xs">Description</h4>
+        <p class="text-sm text-subtle mb-md">${data.description}</p>
+
+        <h4 class="mb-xs">Members</h4>
+        <div class="project__members-info">
+            <ul class="project__members-list">
+                ${renderMembersList(data.members, "large")}
+                <li class="project__add-member">
+                    <img src="/icons/plus.svg" alt="plus icon" />
+                </li>
+            </ul>
+            <span>${data.members.length > 4 ? `${data.members.length - 4}+` : ""}</span>
+        </div>
+    `;
+};
+
+export const renderMembersList = (membersList: string[], size: string): string => {
     let memberElList: string[] = [];
 
     membersList.forEach((): void => {
-        memberElList.push(`<li class="projects__member"></li>`);
+        memberElList.push(`<li class="project${size == "small" ? "s" : ""}__member"></li>`);
     });
     return memberElList.join("");
 };

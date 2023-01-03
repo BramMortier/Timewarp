@@ -31,16 +31,17 @@ export const createUser = async (data: User): Promise<void> => {
     });
 };
 
-export const getUser = async (userId: string): Promise<any> => {
-    return await getDoc(doc(db, "users", userId));
+export const getUser = async (userId: string): Promise<DocumentData> => {
+    const snapshot = await getDoc(doc(db, "users", userId));
+    return snapshot.data() as DocumentData;
 };
 
-export const checkMember = async (member: string): Promise<boolean> => {
+export const checkMember = async (member: string): Promise<string | boolean> => {
     const usersRef: CollectionReference<DocumentData> = collection(db, "users");
     const stmt: Query<DocumentData> = query(usersRef, where("username", "==", member), limit(1));
 
     const querySnapshot: QuerySnapshot<DocumentData> = await getDocs(stmt);
 
     if (querySnapshot.empty) return false;
-    return true;
+    return querySnapshot.docs[0].id;
 };

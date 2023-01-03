@@ -1,14 +1,15 @@
-import { newProjectCollaboratorsList, newProjectForm, newProjectFormErrors, newProjectSuccesMessage, projectPage } from "../lib/constants";
-import { createProject } from "../firebase/database/projects";
-import { notEmpty, validateMembers } from "../lib/validation";
+import { newProjectCollaboratorsList, newProjectForm, newProjectFormErrors, newProjectSuccesMessage, projectsPage } from "../lib/constants";
+import { createProject, getProjects } from "../firebase/database/projects";
+import { notEmpty } from "../lib/validation";
 import { dayMonthYearToTimestamp } from "../lib/dateFormatting";
 import { closeModal, navigate } from "../lib/router";
 import { convertInputsToArray } from "../lib/helper";
+import { checkMember } from "../firebase/database/users";
 
 export const addProject = async (e: Event): Promise<void> => {
     e.preventDefault();
 
-    let errorArr = [];
+    let errorArr: string[] = [];
 
     let projectName: string = newProjectForm.projectName.value;
     let description: string = newProjectForm.description.value;
@@ -19,7 +20,20 @@ export const addProject = async (e: Event): Promise<void> => {
     let month: number = newProjectForm.month.value;
     let year: number = newProjectForm.year.value;
 
-    console.log(await validateMembers(members));
+    const memberChecks = members.map(async (member: string): Promise<string | boolean> => {
+        return await checkMember(member);
+    });
+
+    const checkResults = await Promise.all(memberChecks);
+
+    checkResults.forEach((checkResult: string | boolean, index: number) => {
+        if (checkResult !== false) {
+            members[index] = checkResult as string;
+        } else {
+            errorArr.push("One or more invalid collaborators");
+        }
+    });
+
     if (!notEmpty(projectName)) errorArr.push("A title for your project is required");
 
     if (errorArr.length === 0) {
@@ -40,7 +54,8 @@ export const addProject = async (e: Event): Promise<void> => {
 
             setTimeout(() => {
                 closeModal();
-                navigate(projectPage);
+                getProjects();
+                navigate(projectsPage);
             }, 800);
         } catch (error) {
             showErrors(newProjectFormErrors, errorArr);

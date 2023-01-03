@@ -7,7 +7,6 @@ import {
     projectsPage,
     completedProjectsBtn,
     inProgressProjectsBtn,
-    projectBackBtn,
     dashboardPage,
     newProjectBtns,
     newProjectModal,
@@ -25,6 +24,8 @@ import {
     newProjectCollaboratorsList,
     createProjectBtn,
     newProjectForm,
+    dashboardBackBtn,
+    projectsBackBtn,
 } from "./constants";
 import { closeModal, navigate, openModal } from "./router";
 import { checkPasswordSecurity } from "./validation";
@@ -39,7 +40,11 @@ inProgressProjectsBtn.addEventListener("click", (): void => {
     navigate(projectsPage);
 });
 
-projectBackBtn.addEventListener("click", (): void => {
+projectsBackBtn.addEventListener("click", (): void => {
+    navigate(projectsPage);
+});
+
+dashboardBackBtn.addEventListener("click", (): void => {
     navigate(dashboardPage);
 });
 

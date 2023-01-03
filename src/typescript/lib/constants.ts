@@ -9,10 +9,13 @@ export const taskPage = document.getElementById("task-page") as HTMLElement;
 
 export const pages: HTMLElement[] = [loginPage, signUpPage, dashboardPage, projectPage, projectsPage, taskPage];
 
+export const accountUsername = document.getElementById("account-username") as HTMLElement;
+
 export const inProgressProjectsBtn = document.getElementById("in-progress-projects-btn") as HTMLElement;
 export const completedProjectsBtn = document.getElementById("completed-projects-btn") as HTMLElement;
 
-export const projectBackBtn = document.getElementById("projects-back-btn") as HTMLElement;
+export const dashboardBackBtn = document.getElementById("dashboard-back-btn") as HTMLElement;
+export const projectsBackBtn = document.getElementById("projects-back-btn") as HTMLElement;
 
 export const logoutBtn = document.getElementById("logout-btn") as HTMLElement;
 
@@ -47,4 +50,12 @@ export const newTaskForm = document.getElementById("new-task-form") as HTMLFormE
 export const newPasswordInput = document.getElementById("new-password-input") as HTMLInputElement;
 export const passwordSecurityBars = document.getElementById("password-security-bars") as HTMLElement;
 
+export const dashboardTaskList = document.getElementById("dashboard-task-list") as HTMLElement;
+
 export const projectsList = document.getElementById("projects-list") as HTMLElement;
+
+export const projectInfo = document.getElementById("project-info") as HTMLElement;
+
+export const todoTaskList = document.getElementById("todo-task-list") as HTMLElement;
+export const inProgressTaskList = document.getElementById("in-progress-task-list") as HTMLElement;
+export const completedTaskList = document.getElementById("completed-task-list") as HTMLElement;

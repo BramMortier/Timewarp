@@ -10,7 +10,7 @@ import {
     UserCredential,
 } from "firebase/auth";
 import { Timestamp } from "firebase/firestore";
-import { dashboardPage, loginForm, loginFormErrors, loginPage, signUpForm, signUpFormErrors } from "../lib/constants";
+import { accountUsername, dashboardPage, loginForm, loginFormErrors, loginPage, signUpForm, signUpFormErrors } from "../lib/constants";
 import { navigate } from "../lib/router";
 import { notEmpty, safeLength, validateEmail } from "../lib/validation";
 import { createUser, getUser } from "./database/users";
@@ -18,10 +18,11 @@ import { createUser, getUser } from "./database/users";
 
 export const auth: Auth = getAuth();
 
-auth.onAuthStateChanged((user): void => {
+auth.onAuthStateChanged(async (user): Promise<void> => {
     if (user) {
         sessionStorage.setItem("userId", user.uid);
-        getUser(user.uid);
+        const account: any = await getUser(user.uid);
+        accountUsername.innerText = `Hi, ${account.username}!`;
         navigate(dashboardPage);
     } else {
         sessionStorage.removeItem("userId");

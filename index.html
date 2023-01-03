@@ -96,7 +96,7 @@
                 <header class="header header--complex p-lg mb-sm">
                     <div class="header__profile">
                         <div class="header__profile-icon"></div>
-                        <p class="bold">Ahoy Bram!</p>
+                        <p id="account-username" class="bold">Ahoy Bram!</p>
                     </div>
                     <div class="header__icons">
                         <img id="logout-btn" src="/icons/logout.svg" alt="stats icon" />
@@ -151,7 +151,7 @@
                             </button>
                         </div>
                     </div>
-                    <ul class="dashboard__task-list">
+                    <ul id="dashboard-task-list" class="dashboard__task-list">
                         <li class="dashboard__task">
                             <h4 class="mb-xs text-lg">Design the login page</h4>
                             <p class="text-sm text-subtle mb-lg">
@@ -208,7 +208,7 @@
             <!-- projects page begin -->
             <div id="projects-page" class="projects page">
                 <header class="header p-lg">
-                    <div id="projects-back-btn" class="header__back-btn">
+                    <div id="dashboard-back-btn" class="header__back-btn">
                         <img src="/icons/chevron-left.svg" alt="" />
                     </div>
                     <div class="header__page-title">
@@ -367,7 +367,7 @@
             <!-- project details page begin -->
             <div id="project-page" class="project page">
                 <header class="header p-lg mb-sm">
-                    <div class="header__back-btn">
+                    <div id="projects-back-btn" class="header__back-btn">
                         <img src="/icons/chevron-left.svg" alt="" />
                     </div>
                     <div class="header__page-title">
@@ -375,7 +375,7 @@
                     </div>
                 </header>
 
-                <section class="project__general clear-header pi-lg mb-lg">
+                <section id="project-info" class="project__general clear-header pi-lg mb-lg">
                     <div class="project__general-header mb-md">
                         <h3 class="text-xl">Dev Quiz</h3>
                         <div class="project__deadline">
@@ -433,38 +433,19 @@
                             To do
                             <img src="/icons/chevron-down.svg" alt="chevron icon" />
                         </button>
-                        <ul class="project__tasks-list mb-lg">
-                            <li class="project__task">
-                                <p class="bold">Design login page</p>
-                                <div class="project__task-progress project__task-progress--todo">To do</div>
-                            </li>
-                        </ul>
+                        <ul id="todo-task-list" class="project__tasks-list mb-lg"></ul>
 
                         <button class="dropdown-btn mb-sm">
                             In progress
                             <img src="/icons/chevron-down.svg" alt="chevron icon" />
                         </button>
-                        <ul class="project__tasks-list mb-lg">
-                            <li class="project__task">
-                                <p class="bold">Firebase Auth</p>
-                                <div class="project__task-progress project__task-progress--in-progress">To do</div>
-                            </li>
-                            <li class="project__task">
-                                <p class="bold">Create firestore DB</p>
-                                <div class="project__task-progress project__task-progress--in-progress">To do</div>
-                            </li>
-                        </ul>
+                        <ul id="in-progress-task-list" class="project__tasks-list mb-lg"></ul>
 
                         <button class="dropdown-btn mb-sm">
                             Completed
                             <img src="/icons/chevron-down.svg" alt="chevron icon" />
                         </button>
-                        <ul class="project__tasks-list mb-lg">
-                            <li class="project__task">
-                                <p class="bold">App idea brainstorm</p>
-                                <div class="project__task-progress project__task-progress--completed">To do</div>
-                            </li>
-                        </ul>
+                        <ul id="completed-task-list" class="project__tasks-list mb-lg"></ul>
                     </div>
                 </section>
 

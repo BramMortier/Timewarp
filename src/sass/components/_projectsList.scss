@@ -27,9 +27,20 @@
     }
 
     &__project {
+        overflow: hidden;
+        position: relative;
         background-color: var(--white);
         border: 1px solid var(--grey-500);
         padding: var(--space-sm);
+        transition: background-color ease 0.3s;
+
+        &:active {
+            background-color: var(--grey-500);
+        }
+
+        > * {
+            pointer-events: none;
+        }
     }
 
     &__project-header {
@@ -122,5 +133,20 @@
     &__options {
         display: flex;
         justify-content: flex-end;
+    }
+}
+
+span.ripple {
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(0);
+    animation: ripple 600ms linear;
+    background-color: var(--grey-300);
+}
+
+@keyframes ripple {
+    to {
+        transform: scale(4);
+        opacity: 0;
     }
 }
