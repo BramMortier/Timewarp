@@ -1,6 +1,19 @@
 // ------------------------------------------- //
 // module imports
-import { addDoc, collection, CollectionReference, DocumentData, onSnapshot, query, Query, QuerySnapshot, where } from "firebase/firestore";
+import {
+    addDoc,
+    collection,
+    CollectionReference,
+    DocumentData,
+    DocumentSnapshot,
+    getDoc,
+    doc,
+    onSnapshot,
+    query,
+    Query,
+    QuerySnapshot,
+    where,
+} from "firebase/firestore";
 import { renderTaskList } from "../../components/task";
 import { db } from "./database";
 // ------------------------------------------- //
@@ -25,4 +38,9 @@ export const getTasks = async (id: string): Promise<void> => {
     onSnapshot(stmt, (tasks: QuerySnapshot<DocumentData>): void => {
         renderTaskList(tasks);
     });
+};
+
+export const getTask = async (id: string): Promise<DocumentData> => {
+    const snapshot: DocumentSnapshot<DocumentData> = await getDoc(doc(db, "tasks", id));
+    return snapshot.data() as DocumentData;
 };

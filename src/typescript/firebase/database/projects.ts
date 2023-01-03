@@ -1,6 +1,17 @@
 // ------------------------------------------- //
 // module imports
-import { addDoc, collection, DocumentData, onSnapshot, QuerySnapshot, QueryDocumentSnapshot, Timestamp, getDoc, doc } from "firebase/firestore";
+import {
+    addDoc,
+    collection,
+    DocumentData,
+    onSnapshot,
+    QuerySnapshot,
+    QueryDocumentSnapshot,
+    Timestamp,
+    getDoc,
+    doc,
+    DocumentSnapshot,
+} from "firebase/firestore";
 import { renderProjectCard } from "../../components/project";
 import { projectsList } from "../../lib/constants";
 import { db } from "./database";
@@ -29,6 +40,6 @@ export const getProjects = async (): Promise<void> => {
 };
 
 export const getProject = async (id: string): Promise<DocumentData> => {
-    const snapshot = await getDoc(doc(db, "projects", id));
+    const snapshot: DocumentSnapshot<DocumentData> = await getDoc(doc(db, "projects", id));
     return snapshot.data() as DocumentData;
 };

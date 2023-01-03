@@ -1,7 +1,9 @@
 // ------------------------------------------- //
 // module imports
 import { DocumentData, DocumentSnapshot, QuerySnapshot } from "firebase/firestore";
-import { completedTaskList, dashboardTaskList, inProgressTaskList, todoTaskList } from "../lib/constants";
+import { getTask } from "../firebase/database/tasks";
+import { completedTaskList, dashboardTaskList, inProgressTaskList, newTaskModal, taskPage, todoTaskList } from "../lib/constants";
+import { navigate, openModal } from "../lib/router";
 // ------------------------------------------- //
 
 export const renderTaskList = (taskList: QuerySnapshot<DocumentData>) => {
@@ -20,6 +22,8 @@ export const renderTaskList = (taskList: QuerySnapshot<DocumentData>) => {
             renderTaskCardMinified(task.id, data, completedTaskList);
         }
     });
+
+    checkEmptyLists();
 };
 
 export const renderTaskCard = (id: string, data: any): void => {
@@ -50,6 +54,7 @@ export const renderTaskCard = (id: string, data: any): void => {
 export const renderTaskCardMinified = (id: string, data: any, destination: HTMLElement): void => {
     const taskCardMinifiedEl: HTMLElement = document.createElement("li");
     taskCardMinifiedEl.classList.add("project__task");
+    taskCardMinifiedEl.setAttribute("data-id", id);
 
     console.log(id, data);
 
@@ -58,9 +63,42 @@ export const renderTaskCardMinified = (id: string, data: any, destination: HTMLE
         <div class="project__task-progress project__task-progress--${getLabel(data.progressLabel)}">${data.progressLabel}</div>
     `;
 
+    taskCardMinifiedEl.addEventListener("click", async (): Promise<void> => {
+        console.log(await getTask(id));
+        navigate(taskPage);
+    });
+
     destination.appendChild(taskCardMinifiedEl);
 };
 
 export const getLabel = (progressState: string): string => {
     return progressState.split(" ").join("-").toLocaleLowerCase();
+};
+
+export const checkEmptyLists = () => {
+    if (todoTaskList.innerHTML === "") {
+        renderPlaceholder("Todo", todoTaskList);
+    }
+    if (inProgressTaskList.innerHTML === "") {
+        renderPlaceholder("In Progress", inProgressTaskList);
+    }
+    if (completedTaskList.innerHTML === "") {
+        renderPlaceholder("Completed", completedTaskList);
+    }
+};
+
+export const renderPlaceholder = (type: string, destination: HTMLElement): void => {
+    const placeholderEl: HTMLElement = document.createElement("div");
+    placeholderEl.classList.add("project__tasks-list-placeholder");
+
+    placeholderEl.innerHTML = `
+        <span class="text-white bold">Add ${type}</span>
+        <img src="/icons/plus-blue.svg" alt="plus icon" />
+    `;
+
+    placeholderEl.addEventListener("click", (): void => {
+        openModal(newTaskModal);
+    });
+
+    destination.appendChild(placeholderEl);
 };

@@ -1,3 +1,5 @@
+// ------------------------------------------- //
+// module imports
 import { newProjectCollaboratorsList, newProjectForm, newProjectFormErrors, newProjectSuccesMessage, projectsPage } from "../lib/constants";
 import { createProject, getProjects } from "../firebase/database/projects";
 import { notEmpty } from "../lib/validation";
@@ -5,6 +7,7 @@ import { dayMonthYearToTimestamp } from "../lib/dateFormatting";
 import { closeModal, navigate } from "../lib/router";
 import { convertInputsToArray } from "../lib/helper";
 import { checkMember } from "../firebase/database/users";
+// ------------------------------------------- //
 
 export const addProject = async (e: Event): Promise<void> => {
     e.preventDefault();

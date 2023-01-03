@@ -1,6 +1,7 @@
 // ------------------------------------------- //
 // module imports
 import { addCollaborator, addProject } from "../components/newProject";
+import { addTask } from "../components/newTask";
 import { login, loginWithGoogle, logout, signUp } from "../firebase/auth";
 import { getProjects } from "../firebase/database/projects";
 import {
@@ -26,6 +27,12 @@ import {
     newProjectForm,
     dashboardBackBtn,
     projectsBackBtn,
+    projectBackBtn,
+    projectPage,
+    newTaskBtns,
+    newTaskModal,
+    newTaskForm,
+    createTaskBtn,
 } from "./constants";
 import { closeModal, navigate, openModal } from "./router";
 import { checkPasswordSecurity } from "./validation";
@@ -37,11 +44,16 @@ completedProjectsBtn.addEventListener("click", (): void => {
 });
 
 inProgressProjectsBtn.addEventListener("click", (): void => {
+    getProjects();
     navigate(projectsPage);
 });
 
 projectsBackBtn.addEventListener("click", (): void => {
     navigate(projectsPage);
+});
+
+projectBackBtn.addEventListener("click", (): void => {
+    navigate(projectPage);
 });
 
 dashboardBackBtn.addEventListener("click", (): void => {
@@ -61,12 +73,23 @@ newProjectBtns.forEach((newProjectBtn: HTMLElement): void => {
     });
 });
 
+newTaskBtns.forEach((newTaskBtn: HTMLElement): void => {
+    newTaskBtn.addEventListener("click", (): void => {
+        newTaskForm.reset();
+        openModal(newTaskModal);
+    });
+});
+
 addCollaboratorBtn.addEventListener("click", (): void => {
     addCollaborator();
 });
 
 createProjectBtn.addEventListener("click", (e: Event): void => {
     addProject(e);
+});
+
+createTaskBtn.addEventListener("click", (e: Event): void => {
+    addTask(e);
 });
 
 closeModalBtns.forEach((closeModalBtn: HTMLElement): void => {

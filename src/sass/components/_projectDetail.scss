@@ -78,6 +78,24 @@
         gap: var(--space-sm);
     }
 
+    &__tasks-list-placeholder {
+        padding: var(--space-sm);
+        border: 2px solid var(--blue-700);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: var(--space-md);
+
+        span {
+            color: var(--blue-500);
+        }
+
+        img {
+            width: 20px;
+            height: 20px;
+        }
+    }
+
     &__task {
         background-color: var(--white);
         border: 1px solid var(--grey-500);
@@ -85,6 +103,11 @@
         align-items: center;
         justify-content: space-between;
         padding: var(--space-xs) var(--space-xs) var(--space-xs) var(--space-md);
+        transition: background-color ease 0.3s;
+
+        &:active {
+            background-color: var(--grey-500);
+        }
     }
 
     &__task-progress {

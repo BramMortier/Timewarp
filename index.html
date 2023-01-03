@@ -228,133 +228,7 @@
                 </section>
 
                 <section class="pi-lg">
-                    <ul id="projects-list" class="projects__project-list mb-xl">
-                        <li class="projects__project">
-                            <div class="projects__project-header mb-xs">
-                                <h3 class="text-xl">Dev quiz</h3>
-                                <div class="projects__project-deadline">
-                                    <img src="/icons/calendar.svg" alt="calender icon" />
-                                    <span class="text-orange bold">25/04</span>
-                                </div>
-                            </div>
-
-                            <p class="text-sm text-subtle mb-md">
-                                Build a dynamic quiz app with the help of an API for getting your questions and answers... <br />
-                                <span class="bold text-blue"> read more </span>
-                            </p>
-
-                            <h4 class="mb-xs">Project members</h4>
-                            <div class="projects__members-info mb-xs">
-                                <ul class="projects__members-list">
-                                    <li class="projects__member"></li>
-                                    <li class="projects__member"></li>
-                                    <li class="projects__member"></li>
-                                    <li class="projects__member"></li>
-                                </ul>
-                                <span>3+</span>
-                            </div>
-
-                            <div class="projects__progress-info mb-sm">
-                                <div class="projects__progress-header mb-xs">
-                                    <h4 class="regular">Project progression</h4>
-                                    <span class="bold">65%</span>
-                                </div>
-                                <div class="projects__progress-bar">
-                                    <span class="projects__progress-bar-value"></span>
-                                </div>
-                            </div>
-
-                            <div class="projects__task-overview">
-                                <span class="projects__task projects__task--todo">2</span>
-                                <span class="projects__task projects__task--in-progress">1</span>
-                                <span class="projects__task projects__task--completed">4</span>
-                            </div>
-                        </li>
-
-                        <li class="projects__project">
-                            <div class="projects__project-header mb-xs">
-                                <h3 class="text-xl">Firebase chat app</h3>
-                                <div class="projects__project-deadline">
-                                    <img src="/icons/calendar.svg" alt="calender icon" />
-                                    <span class="text-orange bold">05/02</span>
-                                </div>
-                            </div>
-
-                            <p class="text-sm text-subtle mb-md">
-                                Build a real time chat application with firebase auth and firestore for your database... <br />
-                                <span class="bold text-blue"> read more </span>
-                            </p>
-
-                            <h4 class="mb-xs">Project members</h4>
-                            <div class="projects__members-info mb-xs">
-                                <ul class="projects__members-list">
-                                    <li class="projects__member"></li>
-                                    <li class="projects__member"></li>
-                                    <li class="projects__member"></li>
-                                    <li class="projects__member"></li>
-                                </ul>
-                                <span>7+</span>
-                            </div>
-
-                            <div class="projects__progress-info mb-sm">
-                                <div class="projects__progress-header mb-xs">
-                                    <h4 class="regular">Project progression</h4>
-                                    <span class="bold">65%</span>
-                                </div>
-                                <div class="projects__progress-bar">
-                                    <span class="projects__progress-bar-value"></span>
-                                </div>
-                            </div>
-
-                            <div class="projects__task-overview">
-                                <span class="projects__task projects__task--todo">0</span>
-                                <span class="projects__task projects__task--in-progress">5</span>
-                                <span class="projects__task projects__task--completed">1</span>
-                            </div>
-                        </li>
-
-                        <li class="projects__project">
-                            <div class="projects__project-header mb-xs">
-                                <h3 class="text-xl">Dev quiz</h3>
-                                <div class="projects__project-deadline">
-                                    <img src="/icons/calendar.svg" alt="calender icon" />
-                                    <span class="text-orange bold">25/04</span>
-                                </div>
-                            </div>
-
-                            <p class="text-sm text-subtle mb-md">
-                                Build a dynamic quiz app with the help of an API for getting your questions and answers... <br />
-                                <span class="bold text-blue"> read more </span>
-                            </p>
-
-                            <h4 class="mb-xs">Project members</h4>
-                            <div class="projects__members-info mb-xs">
-                                <ul class="projects__members-list">
-                                    <li class="projects__member"></li>
-                                    <li class="projects__member"></li>
-                                    <li class="projects__member"></li>
-                                    <li class="projects__member"></li>
-                                </ul>
-                                <span>3+</span>
-                            </div>
-
-                            <div class="projects__progress-info mb-sm">
-                                <div class="projects__progress-header mb-xs">
-                                    <h4 class="regular">Project progression</h4>
-                                    <span class="bold">65%</span>
-                                </div>
-                                <div class="projects__progress-bar">
-                                    <span class="projects__progress-bar-value"></span>
-                                </div>
-                            </div>
-
-                            <div class="projects__task-overview">
-                                <span class="projects__task projects__task--todo">2</span>
-                                <span class="projects__task projects__task--in-progress">1</span>
-                                <span class="projects__task projects__task--completed">4</span>
-                            </div>
-                        </li>
-                    </ul>
+                    <ul id="projects-list" class="projects__project-list mb-xl"></ul>
 
                     <div class="projects__options mb-xxl">
                         <button class="new-project-btn icon-btn icon-btn--large icon-btn--secondary">
@@ -412,7 +286,7 @@
                             <p class="text-white">Come on get it over with!</p>
                         </div>
                         <div class="section-header__action-btns">
-                            <button class="icon-btn icon-btn--tertiary">
+                            <button class="new-task-btn icon-btn icon-btn--tertiary">
                                 <img src="/icons/plus.svg" alt="plus icon" />
                             </button>
                             <button class="menu-btn">
@@ -430,10 +304,15 @@
 
                     <div class="project__tasks-overview">
                         <button class="dropdown-btn mb-sm">
-                            To do
+                            Todo
                             <img src="/icons/chevron-down.svg" alt="chevron icon" />
                         </button>
-                        <ul id="todo-task-list" class="project__tasks-list mb-lg"></ul>
+                        <ul id="todo-task-list" class="project__tasks-list mb-lg">
+                            <div class="project__tasks-list-placeholder">
+                                <span class="text-white bold">Add Todo</span>
+                                <img src="/icons/plus-blue.svg" alt="plus icon" />
+                            </div>
+                        </ul>
 
                         <button class="dropdown-btn mb-sm">
                             In progress
@@ -445,7 +324,12 @@
                             Completed
                             <img src="/icons/chevron-down.svg" alt="chevron icon" />
                         </button>
-                        <ul id="completed-task-list" class="project__tasks-list mb-lg"></ul>
+                        <ul id="completed-task-list" class="project__tasks-list mb-lg">
+                            <div class="project__tasks-list-placeholder">
+                                <span class="text-white bold">Add Todo</span>
+                                <img src="/icons/plus-blue.svg" alt="plus icon" />
+                            </div>
+                        </ul>
                     </div>
                 </section>
 
@@ -512,7 +396,7 @@
             <!-- task details page begin -->
             <div id="task-page" class="task page">
                 <header class="header p-lg mb-sm">
-                    <div class="header__back-btn">
+                    <div id="project-back-btn" class="header__back-btn">
                         <img src="/icons/chevron-left.svg" alt="" />
                     </div>
                     <div class="header__page-title">
@@ -638,19 +522,22 @@
                         </button>
                     </div>
                     <form id="new-task-form" class="form">
-                        <div id="login-form-errors" class="form__errors mb-sm"></div>
+                        <div id="new-task-succes-message" class="form__succes mb-sm">
+                            <span class="text-green text-sm">Created project succesfully!</span>
+                        </div>
+                        <div id="new-task-form-errors" class="form__errors mb-sm"></div>
 
                         <h4 class="mb-sm">General info</h4>
                         <div class="form__control mb-sm">
-                            <input type="text" class="form__input" placeholder="Task name" />
+                            <input type="text" class="form__input" placeholder="Task name" name="taskName" />
                         </div>
                         <div class="form__control mb-lg">
-                            <textarea class="form__textarea" placeholder="Description"></textarea>
+                            <textarea class="form__textarea" placeholder="Description" name="description"></textarea>
                         </div>
 
                         <h4 class="mb-sm">Set task progress</h4>
                         <div class="form__dropdown mb-lg">
-                            <div class="form__dropdown-selected">
+                            <div id="new-task-dropdown" class="form__dropdown-selected">
                                 <input type="hidden" />
                                 <span>In progress</span>
                                 <img src="/icons/chevron-down-grey.svg" alt="chevron icon" />
@@ -664,10 +551,10 @@
 
                         <h4 class="mb-sm">Estimated time to complete</h4>
                         <div class="form__control mb-xxl">
-                            <input type="text" class="form__input form__input--small" placeholder="Estimate" />
+                            <input type="text" class="form__input form__input--small" placeholder="Estimate" name="estimate" />
                         </div>
 
-                        <button class="btn btn--secondary">Add</button>
+                        <button id="create-task-btn" class="btn btn--secondary">Add</button>
                     </form>
                 </div>
             </div>
