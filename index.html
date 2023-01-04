@@ -538,11 +538,11 @@
                         <h4 class="mb-sm">Set task progress</h4>
                         <div class="form__dropdown mb-lg">
                             <div id="new-task-dropdown" class="form__dropdown-selected">
-                                <input type="hidden" />
+                                <input type="hidden" name="progress" value="Todo" />
                                 <span>In progress</span>
                                 <img src="/icons/chevron-down-grey.svg" alt="chevron icon" />
                             </div>
-                            <ul class="form__dropdown-list">
+                            <ul id="new-task-dropdown-list" class="form__dropdown-list">
                                 <li class="form__dropdown-option">To do</li>
                                 <li class="form__dropdown-option form__dropdown-option--selected">In progress</li>
                                 <li class="form__dropdown-option">Completed</li>
@@ -550,9 +550,19 @@
                         </div>
 
                         <h4 class="mb-sm">Estimated time to complete</h4>
-                        <div class="form__control mb-xxl">
+                        <div class="form__control mb-lg">
                             <input type="text" class="form__input form__input--small" placeholder="Estimate" name="estimate" />
                         </div>
+                        <ul class="new-task__chips mb-xxl">
+                            <li class="new-task__chip">5m</li>
+                            <li class="new-task__chip">15m</li>
+                            <li class="new-task__chip">30m</li>
+                            <li class="new-task__chip">1u</li>
+                            <li class="new-task__chip">1u 30m</li>
+                            <li class="new-task__chip">2u</li>
+                            <li class="new-task__chip">3u</li>
+                            <li class="new-task__chip">4u+</li>
+                        </ul>
 
                         <button id="create-task-btn" class="btn btn--secondary">Add</button>
                     </form>

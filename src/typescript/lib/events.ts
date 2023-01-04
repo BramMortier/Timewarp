@@ -1,7 +1,7 @@
 // ------------------------------------------- //
 // module imports
 import { addCollaborator, addProject } from "../components/newProject";
-import { addTask } from "../components/newTask";
+import { addTask, handleDropdownMenu, selectChip, toggleDropdownMenu } from "../components/newTask";
 import { login, loginWithGoogle, logout, signUp } from "../firebase/auth";
 import { getProjects } from "../firebase/database/projects";
 import {
@@ -33,6 +33,9 @@ import {
     newTaskModal,
     newTaskForm,
     createTaskBtn,
+    newTaskDropdown,
+    newTaskDropdownOptions,
+    newTaskChips,
 } from "./constants";
 import { closeModal, navigate, openModal } from "./router";
 import { checkPasswordSecurity } from "./validation";
@@ -77,6 +80,22 @@ newTaskBtns.forEach((newTaskBtn: HTMLElement): void => {
     newTaskBtn.addEventListener("click", (): void => {
         newTaskForm.reset();
         openModal(newTaskModal);
+    });
+});
+
+newTaskDropdown.addEventListener("click", (): void => {
+    toggleDropdownMenu();
+});
+
+newTaskDropdownOptions.forEach((option: HTMLElement): void => {
+    option.addEventListener("click", (): void => {
+        handleDropdownMenu(option);
+    });
+});
+
+newTaskChips.forEach((chip: HTMLElement): void => {
+    chip.addEventListener("click", (): void => {
+        selectChip(chip);
     });
 });
 

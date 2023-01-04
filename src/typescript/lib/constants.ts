@@ -49,8 +49,11 @@ export const createProjectBtn = document.getElementById("create-project-btn") as
 
 export const newTaskForm = document.getElementById("new-task-form") as HTMLFormElement;
 export const newTaskFormErrors = document.getElementById("new-task-form-errors") as HTMLElement;
-export const newTaskFormSuccesMessage = document.getElementById("new-task-succes-message") as HTMLElement;
+export const newTaskSuccesMessage = document.getElementById("new-task-succes-message") as HTMLElement;
 export const newTaskDropdown = document.getElementById("new-task-dropdown") as HTMLElement;
+export const newTaskDropdownList = document.getElementById("new-task-dropdown-list") as HTMLElement;
+export const newTaskDropdownOptions = Array.from(document.querySelectorAll(".form__dropdown-option")) as HTMLElement[];
+export const newTaskChips = Array.from(document.querySelectorAll(".new-task__chip")) as HTMLElement[];
 export const createTaskBtn = document.getElementById("create-task-btn") as HTMLElement;
 
 export const newPasswordInput = document.getElementById("new-password-input") as HTMLInputElement;

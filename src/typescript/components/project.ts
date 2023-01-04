@@ -54,6 +54,7 @@ export const renderProjectCard = (id: string, data: any): void => {
 
     projectCardEl.addEventListener("click", async (): Promise<void> => {
         const projectData: DocumentData = await getProject(id);
+        sessionStorage.setItem("currentProjectId", id);
         renderProjectInfo(projectData);
         getTasks(id);
         navigate(projectPage);

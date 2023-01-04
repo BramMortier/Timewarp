@@ -56,8 +56,6 @@ export const renderTaskCardMinified = (id: string, data: any, destination: HTMLE
     taskCardMinifiedEl.classList.add("project__task");
     taskCardMinifiedEl.setAttribute("data-id", id);
 
-    console.log(id, data);
-
     taskCardMinifiedEl.innerHTML = `
         <p class="bold">${data.taskname}</p>
         <div class="project__task-progress project__task-progress--${getLabel(data.progressLabel)}">${data.progressLabel}</div>
@@ -65,6 +63,7 @@ export const renderTaskCardMinified = (id: string, data: any, destination: HTMLE
 
     taskCardMinifiedEl.addEventListener("click", async (): Promise<void> => {
         console.log(await getTask(id));
+        sessionStorage.setItem("currentTaskId", id);
         navigate(taskPage);
     });
 
