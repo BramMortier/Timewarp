@@ -2,6 +2,7 @@ import "../sass/style.scss";
 
 import "./firebase/firebase";
 import "./lib/events";
+import "./lib/markdown";
 
 import { headers } from "./lib/constants";
 

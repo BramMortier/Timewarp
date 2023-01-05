@@ -404,7 +404,7 @@
                     </div>
                 </header>
 
-                <section class="task__general clear-header pi-lg mb-lg">
+                <section id="task-info" class="task__general clear-header pi-lg mb-lg">
                     <h3 class="text-xl mb-md">Design the login page</h3>
                     <h4 class="mb-sm">Description</h4>
                     <p class="text-subtle mb-md text-sm">
@@ -421,9 +421,9 @@
 
                 <section class="task__notes p-lg">
                     <h3 class="text-xl text-white mb-sm">Notes</h3>
-                    <form class="note-input mb-sm">
+                    <form id="new-note-form" class="note-input mb-sm">
                         <div class="form__control form__control--gap">
-                            <input type="text" class="form__input form__input--light" placeholder="Note" />
+                            <input id="new-note-btn" type="text" class="form__input form__input--light" placeholder="Note" name="content" />
                             <button class="btn icon-btn icon-btn--primary icon-btn--large">
                                 <img src="/icons/arrow.svg" alt="arrow icon" />
                             </button>
@@ -565,6 +565,47 @@
                         </ul>
 
                         <button id="create-task-btn" class="btn btn--secondary">Add</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- new note editor begin -->
+            <div id="new-note-overlay" class="new-note overlay">
+                <div class="overlay__content">
+                    <div class="overlay__header">
+                        <h3 class="text-xl">New Note</h3>
+                        <button class="close-modal-btn icon-btn icon-btn--secondary">
+                            <img src="/icons/plus.svg" alt="arrow icon" />
+                        </button>
+                    </div>
+                    <form id="new-note-editor" class="form">
+                        <div id="new-note-succes-message" class="form__succes mb-sm">
+                            <span class="text-green text-sm">Created project succesfully!</span>
+                        </div>
+
+                        <h4 class="mb-sm">Content</h4>
+                        <div class="new-note__options mb-sm">
+                            <ul class="new-note__markdown-hotkeys">
+                                <li id="heading-hotkey" class="new-note__hotkey">
+                                    <img src="/icons/heading.svg" alt="heading icon" />
+                                </li>
+                                <li id="subtitle-hotkey" class="new-note__hotkey">
+                                    <img src="/icons/subtitle.svg" alt="subtitle icon" />
+                                </li>
+                                <li id="list-hotkey" class="new-note__hotkey new-note__hotkey--small-icon">
+                                    <img src="/icons/list.svg" alt="list icon" />
+                                </li>
+                                <li id="code-hotkey" class="new-note__hotkey new-note__hotkey--small-icon">
+                                    <img src="/icons/code-block.svg" alt="code-block icon" />
+                                </li>
+                            </ul>
+                            <button type="button" class="icon-btn icon-btn--secondary">
+                                <img src="/icons/eye.svg" alt="eye icon" />
+                            </button>
+                        </div>
+                        <div id="markdown-content" class="new-note__markdown-content mb-xxl text-subtle text-sm" contenteditable="true"></div>
+
+                        <button id="create-note-btn" class="btn btn--secondary">Add</button>
                     </form>
                 </div>
             </div>

@@ -36,7 +36,14 @@ import {
     newTaskDropdown,
     newTaskDropdownOptions,
     newTaskChips,
+    newNoteBtn,
+    newNoteModal,
+    headingHotkey,
+    subtitleHotkey,
+    listHotkey,
+    codeHotkey,
 } from "./constants";
+import { insertCode, insertHeading, insertList, insertSubtitle } from "./markdown";
 import { closeModal, navigate, openModal } from "./router";
 import { checkPasswordSecurity } from "./validation";
 // ------------------------------------------- //
@@ -83,6 +90,10 @@ newTaskBtns.forEach((newTaskBtn: HTMLElement): void => {
     });
 });
 
+newNoteBtn.addEventListener("click", (): void => {
+    openModal(newNoteModal);
+});
+
 newTaskDropdown.addEventListener("click", (): void => {
     toggleDropdownMenu();
 });
@@ -115,6 +126,22 @@ closeModalBtns.forEach((closeModalBtn: HTMLElement): void => {
     closeModalBtn.addEventListener("click", (): void => {
         closeModal();
     });
+});
+
+headingHotkey.addEventListener("click", (): void => {
+    insertHeading();
+});
+
+subtitleHotkey.addEventListener("click", (): void => {
+    insertSubtitle();
+});
+
+listHotkey.addEventListener("click", (): void => {
+    insertList();
+});
+
+codeHotkey.addEventListener("click", (): void => {
+    insertCode();
 });
 
 signUpForm.addEventListener("submit", (e: Event): void => {

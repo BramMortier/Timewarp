@@ -22,12 +22,14 @@ export const logoutBtn = document.getElementById("logout-btn") as HTMLElement;
 
 export const newProjectBtns = Array.from(document.querySelectorAll(".new-project-btn")) as HTMLElement[];
 export const newTaskBtns = Array.from(document.querySelectorAll(".new-task-btn")) as HTMLElement[];
+export const newNoteBtn = document.getElementById("new-note-btn") as HTMLElement;
 export const closeModalBtns = Array.from(document.querySelectorAll(".close-modal-btn")) as HTMLElement[];
 
 export const newProjectModal = document.getElementById("new-project-overlay") as HTMLElement;
 export const newTaskModal = document.getElementById("new-task-overlay") as HTMLElement;
+export const newNoteModal = document.getElementById("new-note-overlay") as HTMLElement;
 
-export const modals: HTMLElement[] = [newProjectModal, newTaskModal];
+export const modals: HTMLElement[] = [newProjectModal, newTaskModal, newNoteModal];
 
 export const tiles = Array.from(document.querySelectorAll(".tile")) as HTMLElement[];
 
@@ -56,6 +58,14 @@ export const newTaskDropdownOptions = Array.from(document.querySelectorAll(".for
 export const newTaskChips = Array.from(document.querySelectorAll(".new-task__chip")) as HTMLElement[];
 export const createTaskBtn = document.getElementById("create-task-btn") as HTMLElement;
 
+export const newNoteForm = document.getElementById("new-note-form") as HTMLFormElement;
+
+export const markdownContent = document.getElementById("markdown-content") as HTMLElement;
+export const headingHotkey = document.getElementById("heading-hotkey") as HTMLElement;
+export const subtitleHotkey = document.getElementById("subtitle-hotkey") as HTMLElement;
+export const listHotkey = document.getElementById("list-hotkey") as HTMLElement;
+export const codeHotkey = document.getElementById("code-hotkey") as HTMLElement;
+
 export const newPasswordInput = document.getElementById("new-password-input") as HTMLInputElement;
 export const passwordSecurityBars = document.getElementById("password-security-bars") as HTMLElement;
 
@@ -64,6 +74,7 @@ export const dashboardTaskList = document.getElementById("dashboard-task-list") 
 export const projectsList = document.getElementById("projects-list") as HTMLElement;
 
 export const projectInfo = document.getElementById("project-info") as HTMLElement;
+export const taskInfo = document.getElementById("task-info") as HTMLElement;
 
 export const todoTaskList = document.getElementById("todo-task-list") as HTMLElement;
 export const inProgressTaskList = document.getElementById("in-progress-task-list") as HTMLElement;
