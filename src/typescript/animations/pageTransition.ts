@@ -1,5 +1,8 @@
+// ------------------------------------------- //
+// module imports
 import gsap from "gsap";
 import { tiles } from "../lib/constants";
+// ------------------------------------------- //
 
 export const pageTransition = (): void => {
     let tl = gsap.timeline();

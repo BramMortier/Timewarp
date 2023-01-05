@@ -1,5 +1,7 @@
 // ------------------------------------------- //
 // module imports
+import { addComment } from "../components/newComment";
+import { addNote } from "../components/newNote";
 import { addCollaborator, addProject } from "../components/newProject";
 import { addTask, handleDropdownMenu, selectChip, toggleDropdownMenu } from "../components/newTask";
 import { login, loginWithGoogle, logout, signUp } from "../firebase/auth";
@@ -42,8 +44,13 @@ import {
     subtitleHotkey,
     listHotkey,
     codeHotkey,
+    markdownContent,
+    previewMardownBtn,
+    headers,
+    newNoteForm,
+    newCommentForm,
 } from "./constants";
-import { insertCode, insertHeading, insertList, insertSubtitle } from "./markdown";
+import { insertCode, insertHeading, insertList, insertSubtitle, previewMarkdown, togglePreview } from "./markdown";
 import { closeModal, navigate, openModal } from "./router";
 import { checkPasswordSecurity } from "./validation";
 // ------------------------------------------- //
@@ -91,7 +98,16 @@ newTaskBtns.forEach((newTaskBtn: HTMLElement): void => {
 });
 
 newNoteBtn.addEventListener("click", (): void => {
+    markdownContent.innerHTML = "";
     openModal(newNoteModal);
+});
+
+newCommentForm.addEventListener("submit", (e: Event) => {
+    addComment(e);
+});
+
+newNoteForm.addEventListener("submit", (e: Event): void => {
+    addNote(e);
 });
 
 newTaskDropdown.addEventListener("click", (): void => {
@@ -144,6 +160,14 @@ codeHotkey.addEventListener("click", (): void => {
     insertCode();
 });
 
+previewMardownBtn.addEventListener("click", (): void => {
+    togglePreview();
+});
+
+markdownContent.addEventListener("input", (): void => {
+    previewMarkdown(markdownContent.value);
+});
+
 signUpForm.addEventListener("submit", (e: Event): void => {
     signUp(e);
 });
@@ -167,3 +191,21 @@ loginFormLink.addEventListener("click", (): void => {
 loginWithGoogleBtn.addEventListener("click", (): void => {
     loginWithGoogle();
 });
+
+let lastScrollTop = 0;
+
+window.addEventListener("scroll", () => {
+    let scrollTop = window.scrollY;
+    if (scrollTop > lastScrollTop) {
+        displayHeader(false);
+    } else {
+        displayHeader(true);
+    }
+    lastScrollTop = scrollTop;
+});
+
+export const displayHeader = (visible: boolean) => {
+    headers.forEach((header: HTMLElement) => {
+        header.style.top = `${visible ? "0" : "-4rem"}`;
+    });
+};

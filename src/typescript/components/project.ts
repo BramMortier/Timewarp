@@ -1,6 +1,7 @@
 // ------------------------------------------- //
 // module imports
 import { DocumentData } from "firebase/firestore";
+import { getComments } from "../firebase/database/comments";
 import { getProject } from "../firebase/database/projects";
 import { getTasks } from "../firebase/database/tasks";
 import { projectInfo, projectPage, projectsList } from "../lib/constants";
@@ -57,6 +58,7 @@ export const renderProjectCard = (id: string, data: any): void => {
         sessionStorage.setItem("currentProjectId", id);
         renderProjectInfo(projectData);
         getTasks(id);
+        getComments(id);
         navigate(projectPage);
     });
 

@@ -1,7 +1,7 @@
 // ------------------------------------------- //
 // module imports
 import { DocumentData, DocumentSnapshot, QuerySnapshot } from "firebase/firestore";
-import { getTask } from "../firebase/database/tasks";
+import { getTask, getTaskNotes } from "../firebase/database/tasks";
 import { completedTaskList, dashboardTaskList, inProgressTaskList, newTaskModal, taskInfo, taskPage, todoTaskList } from "../lib/constants";
 import { navigate, openModal } from "../lib/router";
 // ------------------------------------------- //
@@ -66,6 +66,7 @@ export const renderTaskCardMinified = (id: string, data: any, destination: HTMLE
         const taskData = await getTask(id);
         sessionStorage.setItem("currentTaskId", id);
         renderTaskInfo(taskData);
+        getTaskNotes(id);
         navigate(taskPage);
     });
 

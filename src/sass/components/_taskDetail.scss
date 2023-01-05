@@ -36,7 +36,7 @@
     &__note {
         background-color: var(--white);
         border: 1px solid var(--grey-500);
-        padding: var(--space-sm);
+        padding: var(--space-sm) var(--space-sm) 0 var(--space-sm);
     }
 
     &__time-spent {

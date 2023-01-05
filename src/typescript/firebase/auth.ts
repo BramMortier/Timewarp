@@ -22,6 +22,7 @@ auth.onAuthStateChanged(async (user): Promise<void> => {
     if (user) {
         sessionStorage.setItem("userId", user.uid);
         const account: any = await getUser(user.uid);
+        sessionStorage.setItem("username", account.username);
         accountUsername.innerText = `Hi, ${account.username}!`;
         navigate(dashboardPage);
     } else {

@@ -5,7 +5,6 @@
         <link rel="icon" type="image/svg+xml" href="/vite.svg" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Timewarp</title>
-        <script defer type="module" src="./src/typescript/index.ts"></script>
     </head>
     <body>
         <main>
@@ -336,16 +335,16 @@
                 <section class="comments pi-lg">
                     <h3 class="text-xl mb-md">Comments</h3>
 
-                    <form class="comment-input mb-sm">
+                    <form id="new-comment-form" class="comment-input mb-sm">
                         <div class="form__control form__control--gap">
-                            <input type="text" class="form__input" placeholder="Comment" />
-                            <button class="btn icon-btn icon-btn--primary icon-btn--large">
+                            <input type="text" class="form__input" placeholder="Comment" name="content" />
+                            <button type="submit" class="btn icon-btn icon-btn--primary icon-btn--large">
                                 <img src="/icons/arrow.svg" alt="arrow icon" />
                             </button>
                         </div>
                     </form>
 
-                    <ul class="comments__list">
+                    <ul id="comments-list" class="comments__list">
                         <li class="comments__comment">
                             <div class="comments__comment-content">
                                 <div class="comments__comment-profile mb-sm">
@@ -430,16 +429,7 @@
                         </div>
                     </form>
 
-                    <ul class="task__notes-list">
-                        <li class="task__note">
-                            <h4 class="mb-xs">Style guide</h4>
-                            <p class="text-subtle text-sm">I mailed you a style guide. Try to follow the colorsheme and layout spacing provided.</p>
-                        </li>
-                        <li class="task__note">
-                            <h4 class="mb-xs">Feedback</h4>
-                            <p class="text-subtle text-sm">If you're done with a layout or need any help don't hesitate to send me an email!</p>
-                        </li>
-                    </ul>
+                    <ul id="notes-list" class="task__notes-list"></ul>
                 </section>
 
                 <section class="task__time-spent p-lg">
@@ -599,11 +589,18 @@
                                     <img src="/icons/code-block.svg" alt="code-block icon" />
                                 </li>
                             </ul>
-                            <button type="button" class="icon-btn icon-btn--secondary">
+                            <button id="preview-markdown-btn" type="button" class="icon-btn icon-btn--secondary">
                                 <img src="/icons/eye.svg" alt="eye icon" />
                             </button>
                         </div>
-                        <div id="markdown-content" class="new-note__markdown-content mb-xxl text-subtle text-sm" contenteditable="true"></div>
+
+                        <textarea
+                            name="content"
+                            id="markdown-content"
+                            class="new-note__markdown-content new-note__markdown-content--active mb-xxl text-subtle text-sm"
+                            placeholder="Write your content"
+                        ></textarea>
+                        <div id="markdown-preview" class="new-note__markdown-preview mb-xxl"></div>
 
                         <button id="create-note-btn" class="btn btn--secondary">Add</button>
                     </form>
@@ -624,5 +621,7 @@
                 <span class="tile"></span>
             </div>
         </main>
+
+        <script type="module" src="./src/typescript/index.ts"></script>
     </body>
 </html>

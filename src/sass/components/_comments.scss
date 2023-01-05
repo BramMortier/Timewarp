@@ -34,6 +34,11 @@
         img {
             height: 20px;
             width: 25px;
+            pointer-events: none;
+        }
+
+        span {
+            pointer-events: none;
         }
     }
 }

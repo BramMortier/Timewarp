@@ -58,13 +58,18 @@ export const newTaskDropdownOptions = Array.from(document.querySelectorAll(".for
 export const newTaskChips = Array.from(document.querySelectorAll(".new-task__chip")) as HTMLElement[];
 export const createTaskBtn = document.getElementById("create-task-btn") as HTMLElement;
 
-export const newNoteForm = document.getElementById("new-note-form") as HTMLFormElement;
+export const newNoteForm = document.getElementById("new-note-editor") as HTMLFormElement;
+export const newNoteSuccesMessage = document.getElementById("new-note-succes-message") as HTMLElement;
 
-export const markdownContent = document.getElementById("markdown-content") as HTMLElement;
+export const newCommentForm = document.getElementById("new-comment-form") as HTMLFormElement;
+
+export const markdownContent = document.getElementById("markdown-content") as HTMLInputElement;
+export const markdownPreview = document.getElementById("markdown-preview") as HTMLElement;
 export const headingHotkey = document.getElementById("heading-hotkey") as HTMLElement;
 export const subtitleHotkey = document.getElementById("subtitle-hotkey") as HTMLElement;
 export const listHotkey = document.getElementById("list-hotkey") as HTMLElement;
 export const codeHotkey = document.getElementById("code-hotkey") as HTMLElement;
+export const previewMardownBtn = document.getElementById("preview-markdown-btn") as HTMLElement;
 
 export const newPasswordInput = document.getElementById("new-password-input") as HTMLInputElement;
 export const passwordSecurityBars = document.getElementById("password-security-bars") as HTMLElement;
@@ -79,3 +84,7 @@ export const taskInfo = document.getElementById("task-info") as HTMLElement;
 export const todoTaskList = document.getElementById("todo-task-list") as HTMLElement;
 export const inProgressTaskList = document.getElementById("in-progress-task-list") as HTMLElement;
 export const completedTaskList = document.getElementById("completed-task-list") as HTMLElement;
+
+export const commentsList = document.getElementById("comments-list") as HTMLElement;
+
+export const notesList = document.getElementById("notes-list") as HTMLElement;

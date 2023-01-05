@@ -32,7 +32,7 @@
         }
 
         img {
-            height: 23px;
+            height: 20px;
         }
 
         &--small-icon {
@@ -48,8 +48,24 @@
         position: relative;
         outline: none;
         padding: var(--space-sm);
+        display: none;
         border: 1px solid var(--grey-500);
         background-color: var(--grey-300);
         min-height: 400px;
+        resize: none;
+        transition: opacity ease 0.3s;
+
+        &--active {
+            display: initial;
+        }
+    }
+
+    &__markdown-preview {
+        min-height: 400px;
+        display: none;
+
+        &--active {
+            display: initial;
+        }
     }
 }
