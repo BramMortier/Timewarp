@@ -13,6 +13,7 @@ import {
     Query,
     QuerySnapshot,
     where,
+    QueryDocumentSnapshot,
 } from "firebase/firestore";
 import { renderNote } from "../../components/note";
 import { renderTaskList } from "../../components/task";
@@ -51,16 +52,14 @@ export const getTask = async (id: string): Promise<DocumentData> => {
 };
 
 export const createNote = async (id: string, data: Note): Promise<void> => {
-    console.log("here");
-    console.log(`tasks/${id}/notes`);
     await addDoc(collection(db, `tasks/${id}/notes`), data);
 };
 
 export const getTaskNotes = async (id: string): Promise<void> => {
-    const notesRef = collection(db, `tasks/${id}/notes`);
+    const notesRef: CollectionReference<DocumentData> = collection(db, `tasks/${id}/notes`);
 
-    onSnapshot(notesRef, (notes) => {
-        notes.forEach((note) => {
+    onSnapshot(notesRef, (notes: QuerySnapshot<DocumentData>): void => {
+        notes.forEach((note: QueryDocumentSnapshot<DocumentData>): void => {
             renderNote(note.id, note.data());
         });
     });

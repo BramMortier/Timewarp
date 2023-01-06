@@ -23,6 +23,11 @@ export type Comment = {
     projectId: string;
 };
 
+export type Reply = {
+    author: string;
+    content: string;
+};
+
 export const createComment = async (data: Comment): Promise<void> => {
     await addDoc(collection(db, "comments"), data);
 };
@@ -35,7 +40,22 @@ export const getComments = async (id: string): Promise<void> => {
         commentsList.innerHTML = "";
 
         comments.forEach((comment: QueryDocumentSnapshot<DocumentData>): void => {
-            renderComment(comment.id, comment.data());
+            renderComment(commentsList, comment.id, comment.data());
+        });
+    });
+};
+
+export const createReply = async (id: string, data: Reply): Promise<void> => {
+    await addDoc(collection(db, `comments/${id}/replies`), data);
+};
+
+export const getReplies = async (id: string): Promise<void> => {
+    const commentRef: CollectionReference<DocumentData> = collection(db, `comments/${id}/replies`);
+
+    onSnapshot(commentRef, (replies: QuerySnapshot<DocumentData>): void => {
+        replies.forEach((reply: QueryDocumentSnapshot<DocumentData>): void => {
+            console.log(reply.data().content);
+            renderComment(id, reply.id, reply.data());
         });
     });
 };

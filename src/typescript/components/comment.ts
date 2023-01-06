@@ -1,8 +1,14 @@
-import { commentsList } from "../lib/constants";
+import { getReplies } from "../firebase/database/comments";
+import { addReply } from "./newComment";
 
-export const renderComment = (id: string, data: any): void => {
+export const renderComment = (target: HTMLElement | string, id: string, data: any): void => {
     const commentEl: HTMLElement = document.createElement("li");
     commentEl.classList.add("comments__comment");
+
+    if (!(target instanceof HTMLElement)) {
+        commentEl.classList.add("comments__comment--reply");
+    }
+
     commentEl.setAttribute("data-id", id);
 
     commentEl.innerHTML = `
@@ -18,7 +24,14 @@ export const renderComment = (id: string, data: any): void => {
         <ul class="comments__comment-replies">
     `;
 
-    commentsList.appendChild(commentEl);
+    let replyListEl;
+
+    if (target instanceof HTMLElement) {
+        target.appendChild(commentEl);
+    } else {
+        replyListEl = document.querySelector(`[data-id="${target}"]`) as HTMLElement;
+        replyListEl.children[1].appendChild(commentEl);
+    }
 
     const replyEl: HTMLElement = document.createElement("div");
     replyEl.classList.add("comments__comment-reply");
@@ -35,6 +48,8 @@ export const renderComment = (id: string, data: any): void => {
     });
 
     commentEl.querySelector(".comments__comment-content")?.appendChild(replyEl);
+
+    getReplies(id);
 };
 
 export const renderReplyInput = (target: HTMLElement): void => {
@@ -52,7 +67,7 @@ export const renderReplyInput = (target: HTMLElement): void => {
     `;
 
     replyFormEl.addEventListener("submit", (e: Event): void => {
-        console.log(e);
+        addReply(e);
     });
 
     const replyInput = replyFormEl.children[0].children[0] as HTMLElement;
