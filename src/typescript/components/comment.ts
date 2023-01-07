@@ -4,10 +4,7 @@ import { addReply } from "./newComment";
 export const renderComment = (target: HTMLElement | string, id: string, data: any): void => {
     const commentEl: HTMLElement = document.createElement("li");
     commentEl.classList.add("comments__comment");
-
-    if (!(target instanceof HTMLElement)) {
-        commentEl.classList.add("comments__comment--reply");
-    }
+    if (!(target instanceof HTMLElement)) commentEl.classList.add("comments__comment--reply");
 
     commentEl.setAttribute("data-id", id);
 
@@ -17,7 +14,7 @@ export const renderComment = (target: HTMLElement | string, id: string, data: an
                 <div></div>
                 <h4>${data.author}</h4>
             </div>
-            <p class="text-subtle text-sm mb-sm">
+            <p class="text-subtle text-sm ${target instanceof HTMLElement ? "mb-sm" : ""}">
                 ${data.content}
             </p>
         </div>
@@ -28,26 +25,26 @@ export const renderComment = (target: HTMLElement | string, id: string, data: an
 
     if (target instanceof HTMLElement) {
         target.appendChild(commentEl);
+
+        const replyEl: HTMLElement = document.createElement("div");
+        replyEl.classList.add("comments__comment-reply");
+
+        replyEl.innerHTML = `
+            <img src="/icons/reply.svg" alt="reply icon" />
+            <span class="text-orange">Reply</span>
+        `;
+
+        replyEl.addEventListener("click", (e: Event): void => {
+            const eventTarget = e.target as HTMLElement;
+            const activeComment = eventTarget.parentElement?.parentElement as HTMLElement;
+            renderReplyInput(activeComment);
+        });
+
+        commentEl.querySelector(".comments__comment-content")?.appendChild(replyEl);
     } else {
         replyListEl = document.querySelector(`[data-id="${target}"]`) as HTMLElement;
         replyListEl.children[1].appendChild(commentEl);
     }
-
-    const replyEl: HTMLElement = document.createElement("div");
-    replyEl.classList.add("comments__comment-reply");
-
-    replyEl.innerHTML = `
-        <img src="/icons/reply.svg" alt="reply icon" />
-        <span class="text-orange">Reply</span>
-    `;
-
-    replyEl.addEventListener("click", (e: Event): void => {
-        const eventTarget = e.target as HTMLElement;
-        const activeComment = eventTarget.parentElement?.parentElement as HTMLElement;
-        renderReplyInput(activeComment);
-    });
-
-    commentEl.querySelector(".comments__comment-content")?.appendChild(replyEl);
 
     getReplies(id);
 };

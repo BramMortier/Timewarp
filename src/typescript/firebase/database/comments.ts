@@ -54,7 +54,6 @@ export const getReplies = async (id: string): Promise<void> => {
 
     onSnapshot(commentRef, (replies: QuerySnapshot<DocumentData>): void => {
         replies.forEach((reply: QueryDocumentSnapshot<DocumentData>): void => {
-            console.log(reply.data().content);
             renderComment(id, reply.id, reply.data());
         });
     });
