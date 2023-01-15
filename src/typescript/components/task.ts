@@ -6,7 +6,7 @@ import { completedTaskList, dashboardTaskList, inProgressTaskList, newTaskModal,
 import { navigate, openModal } from "../lib/router";
 // ------------------------------------------- //
 
-export const renderTaskList = (taskList: QuerySnapshot<DocumentData>) => {
+export const renderProjectTaskList = (taskList: QuerySnapshot<DocumentData>): void => {
     todoTaskList.innerHTML = "";
     inProgressTaskList.innerHTML = "";
     completedTaskList.innerHTML = "";
@@ -26,27 +26,41 @@ export const renderTaskList = (taskList: QuerySnapshot<DocumentData>) => {
     checkEmptyLists();
 };
 
+export const renderTaskList = (taskList: QuerySnapshot<DocumentData>): void => {
+    taskList.forEach((task: DocumentSnapshot<DocumentData>): void => {
+        const data = task.data() as DocumentData;
+
+        renderTaskCard(task.id, data);
+    });
+};
+
 export const renderTaskCard = (id: string, data: any): void => {
     const taskCardEl: HTMLElement = document.createElement("li");
     taskCardEl.classList.add("dashboard__task");
 
-    console.log(id, data);
-
     taskCardEl.innerHTML = `
-        <h4 class="mb-xs text-lg">Add firebase auth</h4>
-        <p class="text-sm text-subtle mb-lg">Use the firebase SDK to add authentication to the app.</p>
+        <h4 class="mb-xs text-lg">${data.taskname}</h4>
+        <p class="text-sm text-subtle mb-lg">${data.description}</p>
         <div class="dashboard__task-info">
             <div class="dashboard__task-infopiece">
                 <img src="/icons/pencil.svg" alt="pencil icon" />
-                <span class="text-orange">1</span>
+                <span class="text-orange">${data.notesCount}</span>
             </div>
             <div class="dashboard__task-infopiece">
                 <img src="/icons/timer.svg" alt="pencil icon" />
-                <span class="text-orange">45m</span>
+                <span class="text-orange">${data.timeEstimate}</span>
             </div>
         </div>
-        <div class="dashboard__task-progress dashboard__task-progress--in-progress text-sm">In progress</div>
+        <div class="text-sm dashboard__task-progress dashboard__task-progress--${getLabel(data.progressLabel)}">${data.progressLabel}</div>
     `;
+
+    taskCardEl.addEventListener("click", async (): Promise<void> => {
+        const taskData = await getTask(id);
+        sessionStorage.setItem("currentTaskId", id);
+        renderTaskInfo(taskData);
+        getTaskNotes(id);
+        navigate(taskPage);
+    });
 
     dashboardTaskList.appendChild(taskCardEl);
 };

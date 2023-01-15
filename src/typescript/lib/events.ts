@@ -1,11 +1,15 @@
 // ------------------------------------------- //
 // module imports
+import { DocumentData } from "firebase/firestore";
 import { addComment } from "../components/newComment";
 import { addNote } from "../components/newNote";
 import { addCollaborator, addProject } from "../components/newProject";
 import { addTask, handleDropdownMenu, selectChip, toggleDropdownMenu } from "../components/newTask";
+import { renderProjectInfo } from "../components/project";
 import { login, loginWithGoogle, logout, signUp } from "../firebase/auth";
-import { getProjects } from "../firebase/database/projects";
+import { getComments } from "../firebase/database/comments";
+import { getProject, getProjects } from "../firebase/database/projects";
+import { getProjectTasks } from "../firebase/database/tasks";
 import {
     projectsPage,
     completedProjectsBtn,
@@ -56,12 +60,10 @@ import { checkPasswordSecurity } from "./validation";
 // ------------------------------------------- //
 
 completedProjectsBtn.addEventListener("click", (): void => {
-    getProjects();
     navigate(projectsPage);
 });
 
 inProgressProjectsBtn.addEventListener("click", (): void => {
-    getProjects();
     navigate(projectsPage);
 });
 
@@ -69,12 +71,18 @@ projectsBackBtn.addEventListener("click", (): void => {
     navigate(projectsPage);
 });
 
-projectBackBtn.addEventListener("click", (): void => {
+projectBackBtn.addEventListener("click", async (): Promise<void> => {
+    const currentProjectId: string = sessionStorage.getItem("currentProjectId") as string;
+    const projectData: DocumentData = await getProject(currentProjectId);
+    renderProjectInfo(projectData);
+    getProjectTasks(currentProjectId, true, "small");
+    getComments(currentProjectId);
     navigate(projectPage);
 });
 
 dashboardBackBtn.addEventListener("click", (): void => {
     navigate(dashboardPage);
+    getProjects(sessionStorage.getItem("userId") as string, false);
 });
 
 logoutBtn.addEventListener("click", (): void => {

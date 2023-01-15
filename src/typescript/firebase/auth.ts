@@ -13,6 +13,7 @@ import { Timestamp } from "firebase/firestore";
 import { accountUsername, dashboardPage, loginForm, loginFormErrors, loginPage, signUpForm, signUpFormErrors } from "../lib/constants";
 import { navigate } from "../lib/router";
 import { notEmpty, safeLength, validateEmail } from "../lib/validation";
+import { getProjects } from "./database/projects";
 import { createUser, getUser } from "./database/users";
 // ------------------------------------------- //
 
@@ -24,7 +25,10 @@ auth.onAuthStateChanged(async (user): Promise<void> => {
         const account: any = await getUser(user.uid);
         sessionStorage.setItem("username", account.username);
         accountUsername.innerText = `Hi, ${account.username}!`;
+
         navigate(dashboardPage);
+        getProjects(sessionStorage.getItem("userId") as string, false);
+        getProjects(sessionStorage.getItem("userId") as string, true);
     } else {
         sessionStorage.removeItem("userId");
         navigate(loginPage);

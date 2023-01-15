@@ -3,7 +3,7 @@
 import { DocumentData } from "firebase/firestore";
 import { getComments } from "../firebase/database/comments";
 import { getProject } from "../firebase/database/projects";
-import { getTasks } from "../firebase/database/tasks";
+import { getProjectTasks } from "../firebase/database/tasks";
 import { projectInfo, projectPage, projectsList } from "../lib/constants";
 import { timestampToDate } from "../lib/dateFormatting";
 import { navigate } from "../lib/router";
@@ -57,7 +57,7 @@ export const renderProjectCard = (id: string, data: any): void => {
         const projectData: DocumentData = await getProject(id);
         sessionStorage.setItem("currentProjectId", id);
         renderProjectInfo(projectData);
-        getTasks(id);
+        getProjectTasks(id, true, "small");
         getComments(id);
         navigate(projectPage);
     });

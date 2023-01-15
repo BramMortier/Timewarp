@@ -16,7 +16,8 @@ import {
     QueryDocumentSnapshot,
 } from "firebase/firestore";
 import { renderNote } from "../../components/note";
-import { renderTaskList } from "../../components/task";
+import { renderProjectTaskList, renderTaskList } from "../../components/task";
+import { notesList } from "../../lib/constants";
 import { db } from "./database";
 // ------------------------------------------- //
 
@@ -37,12 +38,17 @@ export const createTask = async (data: Task): Promise<void> => {
     await addDoc(collection(db, "tasks"), data);
 };
 
-export const getTasks = async (id: string): Promise<void> => {
+export const getProjectTasks = async (id: string, render: boolean, style: string): Promise<void> => {
     const tasksRef: CollectionReference<DocumentData> = collection(db, "tasks");
     const stmt: Query<DocumentData> = query(tasksRef, where("projectId", "==", id));
 
     onSnapshot(stmt, (tasks: QuerySnapshot<DocumentData>): void => {
-        renderTaskList(tasks);
+        if (render && style === "small") {
+            renderProjectTaskList(tasks);
+        }
+        if (render && style === "normal") {
+            renderTaskList(tasks);
+        }
     });
 };
 
@@ -59,6 +65,8 @@ export const getTaskNotes = async (id: string): Promise<void> => {
     const notesRef: CollectionReference<DocumentData> = collection(db, `tasks/${id}/notes`);
 
     onSnapshot(notesRef, (notes: QuerySnapshot<DocumentData>): void => {
+        notesList.innerHTML = "";
+
         notes.forEach((note: QueryDocumentSnapshot<DocumentData>): void => {
             renderNote(note.id, note.data());
         });

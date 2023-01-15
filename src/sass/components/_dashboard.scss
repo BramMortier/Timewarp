@@ -49,7 +49,7 @@
         display: flex;
         flex-direction: column;
         gap: var(--space-md);
-        padding-bottom: var(--space-xxl);
+        padding-bottom: var(--space-xs);
     }
 
     &__task {
@@ -77,20 +77,17 @@
     }
 
     &__task-progress {
+        background-color: var(--grey-300);
+        border: 1px solid var(--grey-500);
+        color: var(--grey-700);
         position: absolute;
         bottom: var(--space-xs);
-        right: -1px;
+        right: -0.5px;
         padding-block: var(--space-xxxs) var(--space-xxs);
         display: flex;
         justify-content: center;
         width: 7rem;
         z-index: 10;
-
-        &--todo {
-            background-color: var(--grey-300);
-            border: 1px solid var(--grey-500);
-            color: var(--grey-700);
-        }
 
         &--in-progress {
             background-color: var(--orange-900);

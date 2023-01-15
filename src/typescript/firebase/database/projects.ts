@@ -11,10 +11,15 @@ import {
     getDoc,
     doc,
     DocumentSnapshot,
+    CollectionReference,
+    Query,
+    query,
+    where,
 } from "firebase/firestore";
 import { renderProjectCard } from "../../components/project";
-import { projectsList } from "../../lib/constants";
+import { dashboardTaskList, projectsList } from "../../lib/constants";
 import { db } from "./database";
+import { getProjectTasks } from "./tasks";
 // ------------------------------------------- //
 
 export type Project = {
@@ -29,13 +34,26 @@ export const createProject = async (data: Project): Promise<void> => {
     await addDoc(collection(db, "projects"), data);
 };
 
-export const getProjects = async (): Promise<void> => {
-    onSnapshot(collection(db, "projects"), (projects: QuerySnapshot<DocumentData>) => {
-        projectsList.innerHTML = "";
+export const getProjects = async (userId: string, render: boolean): Promise<void> => {
+    const projectsRef: CollectionReference<DocumentData> = collection(db, "projects");
+    const stmt: Query<DocumentData> = query(projectsRef, where("members", "array-contains", userId));
 
-        projects.forEach((project: QueryDocumentSnapshot<DocumentData>) => {
-            renderProjectCard(project.id, project.data());
-        });
+    onSnapshot(stmt, (projects: QuerySnapshot<DocumentData>) => {
+        if (!render) {
+            dashboardTaskList.innerHTML = "";
+
+            projects.forEach((project: QueryDocumentSnapshot<DocumentData>) => {
+                getProjectTasks(project.id, true, "normal");
+            });
+        }
+
+        if (render) {
+            projectsList.innerHTML = "";
+
+            projects.forEach((project: QueryDocumentSnapshot<DocumentData>) => {
+                renderProjectCard(project.id, project.data());
+            });
+        }
     });
 };
 
