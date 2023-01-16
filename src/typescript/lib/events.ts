@@ -6,6 +6,7 @@ import { addNote } from "../components/newNote";
 import { addCollaborator, addProject } from "../components/newProject";
 import { addTask, handleDropdownMenu, selectChip, toggleDropdownMenu } from "../components/newTask";
 import { renderProjectInfo } from "../components/project";
+import { updateProjectsFilters } from "../components/projectsFilters";
 import { login, loginWithGoogle, logout, signUp } from "../firebase/auth";
 import { getComments } from "../firebase/database/comments";
 import { getProject, getProjects } from "../firebase/database/projects";
@@ -53,6 +54,8 @@ import {
     headers,
     newNoteForm,
     newCommentForm,
+    projectsCompletedBtn,
+    projectsInProgressBtn,
 } from "./constants";
 import { insertCode, insertHeading, insertList, insertSubtitle, previewMarkdown, togglePreview } from "./markdown";
 import { closeModal, navigate, openModal } from "./router";
@@ -60,10 +63,12 @@ import { checkPasswordSecurity } from "./validation";
 // ------------------------------------------- //
 
 completedProjectsBtn.addEventListener("click", (): void => {
+    updateProjectsFilters("completed");
     navigate(projectsPage);
 });
 
 inProgressProjectsBtn.addEventListener("click", (): void => {
+    updateProjectsFilters("in progress");
     navigate(projectsPage);
 });
 
@@ -83,6 +88,14 @@ projectBackBtn.addEventListener("click", async (): Promise<void> => {
 dashboardBackBtn.addEventListener("click", (): void => {
     navigate(dashboardPage);
     getProjects(sessionStorage.getItem("userId") as string, false);
+});
+
+projectsCompletedBtn.addEventListener("click", (): void => {
+    updateProjectsFilters("completed");
+});
+
+projectsInProgressBtn.addEventListener("click", (): void => {
+    updateProjectsFilters("in progress");
 });
 
 logoutBtn.addEventListener("click", (): void => {

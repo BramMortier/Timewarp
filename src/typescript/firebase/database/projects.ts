@@ -16,7 +16,7 @@ import {
     query,
     where,
 } from "firebase/firestore";
-import { renderProjectCard } from "../../components/project";
+import { checkEmptyProjectList, renderProjectCard } from "../../components/project";
 import { dashboardTaskList, projectsList } from "../../lib/constants";
 import { db } from "./database";
 import { getProjectTasks } from "./tasks";
@@ -53,6 +53,8 @@ export const getProjects = async (userId: string, render: boolean): Promise<void
             projects.forEach((project: QueryDocumentSnapshot<DocumentData>) => {
                 renderProjectCard(project.id, project.data());
             });
+
+            checkEmptyProjectList();
         }
     });
 };

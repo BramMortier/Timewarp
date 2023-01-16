@@ -57,6 +57,11 @@
         background-color: var(--white);
         border: 1px solid var(--grey-300);
         padding: var(--space-sm);
+        transition: background-color ease 0.3s;
+
+        &:active {
+            background-color: var(--grey-500);
+        }
     }
 
     &__task-info {

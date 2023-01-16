@@ -150,57 +150,7 @@
                             </button>
                         </div>
                     </div>
-                    <ul id="dashboard-task-list" class="dashboard__task-list">
-                        <li class="dashboard__task">
-                            <h4 class="mb-xs text-lg">Design the login page</h4>
-                            <p class="text-sm text-subtle mb-lg">
-                                Brainstorm some nice layouts and make them in to low fidelity wireframes. Also make sure...
-                            </p>
-                            <div class="dashboard__task-info">
-                                <div class="dashboard__task-infopiece">
-                                    <img src="/icons/pencil.svg" alt="pencil icon" />
-                                    <span class="text-orange">3</span>
-                                </div>
-                                <div class="dashboard__task-infopiece">
-                                    <img src="/icons/timer.svg" alt="pencil icon" />
-                                    <span class="text-orange">1h 30m</span>
-                                </div>
-                            </div>
-                            <div class="dashboard__task-progress dashboard__task-progress--todo text-sm">To do</div>
-                        </li>
-
-                        <li class="dashboard__task">
-                            <h4 class="mb-xs text-lg">Add firebase auth</h4>
-                            <p class="text-sm text-subtle mb-lg">Use the firebase SDK to add authentication to the app.</p>
-                            <div class="dashboard__task-info">
-                                <div class="dashboard__task-infopiece">
-                                    <img src="/icons/pencil.svg" alt="pencil icon" />
-                                    <span class="text-orange">1</span>
-                                </div>
-                                <div class="dashboard__task-infopiece">
-                                    <img src="/icons/timer.svg" alt="pencil icon" />
-                                    <span class="text-orange">45m</span>
-                                </div>
-                            </div>
-                            <div class="dashboard__task-progress dashboard__task-progress--in-progress text-sm">In progress</div>
-                        </li>
-
-                        <li class="dashboard__task">
-                            <h4 class="mb-xs text-lg">Create the firestore DB</h4>
-                            <p class="text-sm text-subtle mb-lg">Create a db shema following the database design provided.</p>
-                            <div class="dashboard__task-info">
-                                <div class="dashboard__task-infopiece">
-                                    <img src="/icons/pencil.svg" alt="pencil icon" />
-                                    <span class="text-orange">7</span>
-                                </div>
-                                <div class="dashboard__task-infopiece">
-                                    <img src="/icons/timer.svg" alt="pencil icon" />
-                                    <span class="text-orange">2h 15m</span>
-                                </div>
-                            </div>
-                            <div class="dashboard__task-progress dashboard__task-progress--completed text-sm">Completed</div>
-                        </li>
-                    </ul>
+                    <ul id="dashboard-task-list" class="dashboard__task-list"></ul>
                 </section>
             </div>
 
@@ -217,17 +167,17 @@
 
                 <section class="projects__filters clear-header pi-lg mb-md">
                     <div class="projects__completion-filter">
-                        <div class="projects__filter-option projects__filter-option--active">
+                        <div id="projects-in-progress-btn" class="projects__filter-option projects__filter-option--active">
                             <p class="bold">In progress</p>
                         </div>
-                        <div class="projects__filter-option">
+                        <div id="projects-completed-btn" class="projects__filter-option">
                             <p class="bold">Completed</p>
                         </div>
                     </div>
                 </section>
 
                 <section class="pi-lg">
-                    <ul id="projects-list" class="projects__project-list mb-xl"></ul>
+                    <ul id="projects-list" class="projects__project-list mb-md"></ul>
 
                     <div class="projects__options mb-xxl">
                         <button class="new-project-btn icon-btn icon-btn--large icon-btn--secondary">

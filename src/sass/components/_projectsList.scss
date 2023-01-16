@@ -11,6 +11,7 @@
         width: 50%;
         display: flex;
         justify-content: center;
+        transition: background-color ease 0.3s, color ease 0.3s;
 
         &--active {
             color: var(--white);
@@ -26,6 +27,11 @@
         gap: var(--space-sm);
     }
 
+    &__empty-list-placeholder {
+        padding: var(--space-xxxl) var(--space-xl);
+        border: 1px solid var(--grey-500);
+    }
+
     &__project {
         overflow: hidden;
         position: relative;
@@ -33,6 +39,10 @@
         border: 1px solid var(--grey-500);
         padding: var(--space-sm);
         transition: background-color ease 0.3s;
+
+        &--hidden {
+            display: none;
+        }
 
         &:active {
             background-color: var(--grey-500);

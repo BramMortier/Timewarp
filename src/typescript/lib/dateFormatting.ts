@@ -29,3 +29,13 @@ export const dayMonthYearToTimestamp = (day: number, month: number, year: number
     const date = new Date(year, month - 1, day);
     return Timestamp.fromDate(date);
 };
+
+export const timestampToDayMonthYear = (timestamp: Timestamp): string[] => {
+    let date: Date = timestamp.toDate();
+
+    let day: string = date.getDate().toString().padStart(2, "0");
+    let month: string = (date.getMonth() + 1).toString().padStart(2, "0");
+    let year: string = date.getFullYear().toString();
+
+    return [day, month, year];
+};

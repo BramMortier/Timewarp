@@ -57,7 +57,7 @@ export const addProject = async (e: Event): Promise<void> => {
 
             setTimeout(() => {
                 closeModal();
-                getProjects();
+                getProjects(sessionStorage.getItem("userId") as string, true);
                 navigate(projectsPage);
             }, 800);
         } catch (error) {
@@ -68,13 +68,15 @@ export const addProject = async (e: Event): Promise<void> => {
     }
 };
 
-export const addCollaborator = (): void => {
+export const addCollaborator = (collaboratorName?: string): void => {
     const collaboratorEl: HTMLElement = document.createElement("li");
     collaboratorEl.classList.add("new-project__collaborator");
 
     collaboratorEl.innerHTML = `
         <div class="new-project__collaborator-icon"></div>
-        <input type="text" class="form__input" placeholder="Collaborator name" name="collaborators[]" />
+        <input type="text" class="form__input" placeholder="Collaborator name" name="collaborators[]" value="${
+            collaboratorName ? collaboratorName : ""
+        }"/>
         <button class="icon-btn icon-btn--secondary icon-btn--close">
             <img src="/icons/plus.svg" alt="close icon" />
         </button>

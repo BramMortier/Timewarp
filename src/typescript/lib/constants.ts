@@ -76,6 +76,8 @@ export const passwordSecurityBars = document.getElementById("password-security-b
 
 export const dashboardTaskList = document.getElementById("dashboard-task-list") as HTMLElement;
 
+export const projectsInProgressBtn = document.getElementById("projects-in-progress-btn") as HTMLElement;
+export const projectsCompletedBtn = document.getElementById("projects-completed-btn") as HTMLElement;
 export const projectsList = document.getElementById("projects-list") as HTMLElement;
 
 export const projectInfo = document.getElementById("project-info") as HTMLElement;
