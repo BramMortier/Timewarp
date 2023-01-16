@@ -15,6 +15,8 @@ import {
     Query,
     query,
     where,
+    updateDoc,
+    deleteDoc,
 } from "firebase/firestore";
 import { checkEmptyProjectList, renderProjectCard } from "../../components/project";
 import { dashboardTaskList, projectsList } from "../../lib/constants";
@@ -32,6 +34,14 @@ export type Project = {
 
 export const createProject = async (data: Project): Promise<void> => {
     await addDoc(collection(db, "projects"), data);
+};
+
+export const updateProject = async (id: string, data: any): Promise<void> => {
+    await updateDoc(doc(db, "projects", id), data);
+};
+
+export const deleteProject = async (id: string): Promise<void> => {
+    await deleteDoc(doc(db, "projects", id));
 };
 
 export const getProjects = async (userId: string, render: boolean): Promise<void> => {

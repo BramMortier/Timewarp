@@ -37,6 +37,10 @@
     height: 35px;
     padding: calc(var(--space-xs) + 2px);
 
+    &--no-bg {
+        background-color: transparent;
+    }
+
     &--close img {
         transform: rotate(45deg);
     }

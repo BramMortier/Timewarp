@@ -5,11 +5,11 @@ import { addComment } from "../components/newComment";
 import { addNote } from "../components/newNote";
 import { addCollaborator, addProject } from "../components/newProject";
 import { addTask, handleDropdownMenu, selectChip, toggleDropdownMenu } from "../components/newTask";
-import { renderProjectInfo } from "../components/project";
+import { renderProjectInfo, updateProjectForm } from "../components/project";
 import { updateProjectsFilters } from "../components/projectsFilters";
 import { login, loginWithGoogle, logout, signUp } from "../firebase/auth";
 import { getComments } from "../firebase/database/comments";
-import { getProject, getProjects } from "../firebase/database/projects";
+import { deleteProject, getProject, getProjects } from "../firebase/database/projects";
 import { getProjectTasks } from "../firebase/database/tasks";
 import {
     projectsPage,
@@ -56,6 +56,10 @@ import {
     newCommentForm,
     projectsCompletedBtn,
     projectsInProgressBtn,
+    editProjectBtn,
+    deleteProjectBtn,
+    editTaskBtn,
+    deleteTaskBtn,
 } from "./constants";
 import { insertCode, insertHeading, insertList, insertSubtitle, previewMarkdown, togglePreview } from "./markdown";
 import { closeModal, navigate, openModal } from "./router";
@@ -116,6 +120,25 @@ newTaskBtns.forEach((newTaskBtn: HTMLElement): void => {
         newTaskForm.reset();
         openModal(newTaskModal);
     });
+});
+
+editProjectBtn.addEventListener("click", (): void => {
+    updateProjectForm(sessionStorage.getItem("currentProjectData") as string);
+    openModal(newProjectModal);
+});
+
+deleteProjectBtn.addEventListener("click", async (): Promise<void> => {
+    await deleteProject(sessionStorage.getItem("currentProjectId") as string);
+    getProjects(sessionStorage.getItem("userId") as string, true);
+    navigate(projectsPage);
+});
+
+editTaskBtn.addEventListener("click", (): void => {
+    console.log("edit task");
+});
+
+deleteTaskBtn.addEventListener("click", async (): Promise<void> => {
+    console.log("delete task");
 });
 
 newNoteBtn.addEventListener("click", (): void => {

@@ -1,6 +1,6 @@
 // ------------------------------------------- //
 // module imports
-import { DocumentData } from "firebase/firestore";
+import { DocumentData, Timestamp } from "firebase/firestore";
 import { getComments } from "../firebase/database/comments";
 import { getProject } from "../firebase/database/projects";
 import { getProjectTasks } from "../firebase/database/tasks";
@@ -57,7 +57,10 @@ export const renderProjectCard = (id: string, data: any): void => {
 
     projectCardEl.addEventListener("click", async (): Promise<void> => {
         const projectData: DocumentData = await getProject(id);
+
         sessionStorage.setItem("currentProjectId", id);
+        sessionStorage.setItem("currentProjectData", JSON.stringify(data));
+
         renderProjectInfo(projectData);
         getProjectTasks(id, true, "small");
         getComments(id);
@@ -95,12 +98,14 @@ export const renderProjectInfo = (data: any): void => {
     const projectMembersList = projectInfo.querySelector("#project-members-list") as HTMLElement;
 
     projectMembersList.addEventListener("click", (): void => {
-        updateProjectForm(data);
+        updateProjectForm(sessionStorage.getItem("currentProjectData") as string);
         openModal(newProjectModal);
     });
 };
 
 export const updateProjectForm = async (data: any): Promise<void> => {
+    data = JSON.parse(data);
+
     const memberUsernames = data.members.map(async (id: string): Promise<void> => {
         const res: DocumentData = await getUser(id);
         return res.username;
@@ -116,11 +121,13 @@ export const updateProjectForm = async (data: any): Promise<void> => {
     newProjectForm.projectName.value = data.title;
     newProjectForm.description.value = data.description;
 
-    const deadline: string[] = timestampToDayMonthYear(data.deadline);
+    const deadline: string[] = timestampToDayMonthYear(new Timestamp(data.deadline.seconds, data.deadline.nanoseconds));
 
     newProjectForm.day.value = deadline[0];
     newProjectForm.month.value = deadline[1];
     newProjectForm.year.value = deadline[2];
+
+    newProjectForm.setAttribute("data-update", "true");
 };
 
 export const renderMembersList = (membersList: string[], size: string): string => {
@@ -142,7 +149,7 @@ export const checkEmptyProjectList = (): void => {
     placeholderEl.classList.add("projects__empty-list-placeholder", "center");
 
     placeholderEl.innerHTML = `
-        <p class="mb-xxs bold">0 Results</p>
+        <p class="mb-xxs bold text-lg">0 Results</p>
         <p class="text-subtle text-sm">Seems that you haven't completed any projects yet</p>
     `;
 

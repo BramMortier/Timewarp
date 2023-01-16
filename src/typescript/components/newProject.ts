@@ -1,7 +1,7 @@
 // ------------------------------------------- //
 // module imports
 import { newProjectCollaboratorsList, newProjectForm, newProjectFormErrors, newProjectSuccesMessage, projectsPage } from "../lib/constants";
-import { createProject, getProjects } from "../firebase/database/projects";
+import { createProject, getProjects, updateProject } from "../firebase/database/projects";
 import { notEmpty } from "../lib/validation";
 import { dayMonthYearToTimestamp } from "../lib/dateFormatting";
 import { closeModal, navigate } from "../lib/router";
@@ -44,13 +44,24 @@ export const addProject = async (e: Event): Promise<void> => {
             newProjectFormErrors.innerHTML = "";
             newProjectFormErrors.classList.remove("form__errors--active");
 
-            createProject({
-                title: projectName,
-                deadline: dayMonthYearToTimestamp(day, month, year),
-                description: description,
-                members: members,
-                taskOverview: [0, 0, 0],
-            });
+            if (newProjectForm.getAttribute("data-update") === "true") {
+                updateProject(sessionStorage.getItem("currentProjectId") as string, {
+                    title: projectName,
+                    deadline: dayMonthYearToTimestamp(day, month, year),
+                    description: description,
+                    members: members,
+                });
+            } else {
+                createProject({
+                    title: projectName,
+                    deadline: dayMonthYearToTimestamp(day, month, year),
+                    description: description,
+                    members: members,
+                    taskOverview: [0, 0, 0],
+                });
+            }
+
+            newProjectForm.setAttribute("data-update", "false");
 
             newProjectForm.reset();
             showSuccesMessage();

@@ -56,7 +56,10 @@ export const renderTaskCard = (id: string, data: any): void => {
 
     taskCardEl.addEventListener("click", async (): Promise<void> => {
         const taskData = await getTask(id);
+
         sessionStorage.setItem("currentTaskId", id);
+        sessionStorage.setItem("currentTaskData", JSON.stringify(data));
+
         renderTaskInfo(taskData);
         getTaskNotes(id);
         navigate(taskPage);
@@ -78,7 +81,10 @@ export const renderTaskCardMinified = (id: string, data: any, destination: HTMLE
 
     taskCardMinifiedEl.addEventListener("click", async (): Promise<void> => {
         const taskData = await getTask(id);
+
         sessionStorage.setItem("currentTaskId", id);
+        sessionStorage.setItem("currentTaskData", JSON.stringify(data));
+
         renderTaskInfo(taskData);
         getTaskNotes(id);
         navigate(taskPage);

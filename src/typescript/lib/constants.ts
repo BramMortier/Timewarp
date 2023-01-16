@@ -71,6 +71,11 @@ export const listHotkey = document.getElementById("list-hotkey") as HTMLElement;
 export const codeHotkey = document.getElementById("code-hotkey") as HTMLElement;
 export const previewMardownBtn = document.getElementById("preview-markdown-btn") as HTMLElement;
 
+export const editProjectBtn = document.getElementById("edit-project-btn") as HTMLElement;
+export const deleteProjectBtn = document.getElementById("delete-project-btn") as HTMLElement;
+export const editTaskBtn = document.getElementById("edit-task-btn") as HTMLElement;
+export const deleteTaskBtn = document.getElementById("delete-task-btn") as HTMLElement;
+
 export const newPasswordInput = document.getElementById("new-password-input") as HTMLInputElement;
 export const passwordSecurityBars = document.getElementById("password-security-bars") as HTMLElement;
 

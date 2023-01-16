@@ -1,9 +1,9 @@
 header,
 .header {
     position: fixed;
-    display: flex;
+    display: grid;
     align-items: center;
-    justify-content: center;
+    grid-template-columns: repeat(3, 1fr);
     top: 0;
     left: 0;
     width: 100%;
@@ -14,13 +14,25 @@ header,
     z-index: 999;
 
     &--complex {
-        justify-content: space-between;
+        grid-template-columns: repeat(2, 1fr);
     }
 
     &__profile {
         display: flex;
         align-items: center;
         gap: var(--space-sm);
+    }
+
+    &__action-btns {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: var(--space-lg);
+
+        img {
+            height: 25px;
+            width: 25px;
+        }
     }
 
     &__profile-icon {
@@ -31,17 +43,18 @@ header,
     }
 
     &__icons {
+        justify-content: flex-end;
         display: flex;
         gap: var(--space-lg);
-    }
-
-    &__back-btn {
-        position: absolute;
-        left: var(--space-lg);
 
         img {
-            width: 20px;
             height: 25px;
+            width: 25px;
         }
+    }
+
+    &__back-btn img {
+        width: 20px;
+        height: 25px;
     }
 }
