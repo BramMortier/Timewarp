@@ -10,7 +10,7 @@ import { updateProjectsFilters } from "../components/projectsFilters";
 import { login, loginWithGoogle, logout, signUp } from "../firebase/auth";
 import { getComments } from "../firebase/database/comments";
 import { deleteProject, getProject, getProjects } from "../firebase/database/projects";
-import { getProjectTasks } from "../firebase/database/tasks";
+import { deleteTask, getProjectTasks } from "../firebase/database/tasks";
 import {
     projectsPage,
     completedProjectsBtn,
@@ -138,7 +138,9 @@ editTaskBtn.addEventListener("click", (): void => {
 });
 
 deleteTaskBtn.addEventListener("click", async (): Promise<void> => {
-    console.log("delete task");
+    await deleteTask(sessionStorage.getItem("currentTaskId") as string);
+    getProjectTasks(sessionStorage.getItem("currentProjectId") as string, true, "small");
+    navigate(projectPage);
 });
 
 newNoteBtn.addEventListener("click", (): void => {

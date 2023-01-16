@@ -14,6 +14,7 @@ import {
     QuerySnapshot,
     where,
     QueryDocumentSnapshot,
+    deleteDoc,
 } from "firebase/firestore";
 import { renderNote } from "../../components/note";
 import { renderProjectTaskList, renderTaskList } from "../../components/task";
@@ -36,6 +37,10 @@ export type Note = {
 
 export const createTask = async (data: Task): Promise<void> => {
     await addDoc(collection(db, "tasks"), data);
+};
+
+export const deleteTask = async (id: string): Promise<void> => {
+    await deleteDoc(doc(db, "tasks", id));
 };
 
 export const getProjectTasks = async (id: string, render: boolean, style: string): Promise<void> => {
