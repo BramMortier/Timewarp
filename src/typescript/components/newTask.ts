@@ -9,6 +9,7 @@ import {
     newTaskForm,
     newTaskFormErrors,
     newTaskSuccesMessage,
+    taskDeletionMessage,
 } from "../lib/constants";
 import { closeModal } from "../lib/router";
 import { notEmpty } from "../lib/validation";
@@ -90,6 +91,13 @@ export const showSuccesMessage = (): void => {
     newTaskSuccesMessage.classList.add("form__succes--active");
     setTimeout(() => {
         newTaskSuccesMessage.classList.remove("form__succes--active");
+    }, 1000);
+};
+
+export const showTaskDeleteMessage = (): void => {
+    taskDeletionMessage.classList.add("form__delete--active");
+    setTimeout(() => {
+        taskDeletionMessage.classList.remove("form__delete--active");
     }, 1000);
 };
 

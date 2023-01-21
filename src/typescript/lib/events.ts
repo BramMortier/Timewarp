@@ -3,8 +3,8 @@
 import { DocumentData } from "firebase/firestore";
 import { addComment } from "../components/newComment";
 import { addNote } from "../components/newNote";
-import { addCollaborator, addProject } from "../components/newProject";
-import { addTask, handleDropdownMenu, selectChip, toggleDropdownMenu } from "../components/newTask";
+import { addCollaborator, addProject, showProjectDeleteMessage } from "../components/newProject";
+import { addTask, handleDropdownMenu, selectChip, toggleDropdownMenu, showTaskDeleteMessage } from "../components/newTask";
 import { renderProjectInfo, updateProjectForm } from "../components/project";
 import { updateProjectsFilters } from "../components/projectsFilters";
 import { login, loginWithGoogle, logout, signUp } from "../firebase/auth";
@@ -60,6 +60,10 @@ import {
     deleteProjectBtn,
     editTaskBtn,
     deleteTaskBtn,
+    confirmDeleteProjectBtn,
+    deleteProjectModal,
+    confirmDeleteTaskBtn,
+    deleteTaskModal,
 } from "./constants";
 import { insertCode, insertHeading, insertList, insertSubtitle, previewMarkdown, togglePreview } from "./markdown";
 import { closeModal, navigate, openModal } from "./router";
@@ -127,10 +131,19 @@ editProjectBtn.addEventListener("click", (): void => {
     openModal(newProjectModal);
 });
 
-deleteProjectBtn.addEventListener("click", async (): Promise<void> => {
+deleteProjectBtn.addEventListener("click", (): void => {
+    openModal(deleteProjectModal);
+});
+
+confirmDeleteProjectBtn.addEventListener("click", async (): Promise<void> => {
     await deleteProject(sessionStorage.getItem("currentProjectId") as string);
     getProjects(sessionStorage.getItem("userId") as string, true);
-    navigate(projectsPage);
+    showProjectDeleteMessage();
+
+    setTimeout(() => {
+        closeModal();
+        navigate(projectsPage);
+    }, 800);
 });
 
 editTaskBtn.addEventListener("click", (): void => {
@@ -138,9 +151,18 @@ editTaskBtn.addEventListener("click", (): void => {
 });
 
 deleteTaskBtn.addEventListener("click", async (): Promise<void> => {
+    openModal(deleteTaskModal);
+});
+
+confirmDeleteTaskBtn.addEventListener("click", async (): Promise<void> => {
     await deleteTask(sessionStorage.getItem("currentTaskId") as string);
     getProjectTasks(sessionStorage.getItem("currentProjectId") as string, true, "small");
-    navigate(projectPage);
+    showTaskDeleteMessage();
+
+    setTimeout(() => {
+        closeModal();
+        navigate(projectPage);
+    }, 800);
 });
 
 newNoteBtn.addEventListener("click", (): void => {

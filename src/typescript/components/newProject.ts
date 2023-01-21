@@ -1,6 +1,13 @@
 // ------------------------------------------- //
 // module imports
-import { newProjectCollaboratorsList, newProjectForm, newProjectFormErrors, newProjectSuccesMessage, projectsPage } from "../lib/constants";
+import {
+    newProjectCollaboratorsList,
+    newProjectForm,
+    newProjectFormErrors,
+    newProjectSuccesMessage,
+    projectDeletionMessage,
+    projectsPage,
+} from "../lib/constants";
 import { createProject, getProjects, updateProject } from "../firebase/database/projects";
 import { notEmpty } from "../lib/validation";
 import { dayMonthYearToTimestamp } from "../lib/dateFormatting";
@@ -106,6 +113,13 @@ export const showSuccesMessage = (): void => {
     newProjectSuccesMessage.classList.add("form__succes--active");
     setTimeout(() => {
         newProjectSuccesMessage.classList.remove("form__succes--active");
+    }, 1000);
+};
+
+export const showProjectDeleteMessage = (): void => {
+    projectDeletionMessage.classList.add("form__delete--active");
+    setTimeout(() => {
+        projectDeletionMessage.classList.remove("form__delete--active");
     }, 1000);
 };
 

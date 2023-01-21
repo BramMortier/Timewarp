@@ -2,10 +2,22 @@
 // module imports
 import { DocumentData, Timestamp } from "firebase/firestore";
 import { getComments } from "../firebase/database/comments";
-import { getProject } from "../firebase/database/projects";
+import { getProject, updateProject } from "../firebase/database/projects";
 import { getProjectTasks } from "../firebase/database/tasks";
 import { getUser } from "../firebase/database/users";
-import { newProjectCollaboratorsList, newProjectForm, newProjectModal, projectInfo, projectPage, projectsList } from "../lib/constants";
+import {
+    completedProjectsCount,
+    completedTaskList,
+    inProgressProjectsCount,
+    inProgressTaskList,
+    newProjectCollaboratorsList,
+    newProjectForm,
+    newProjectModal,
+    projectInfo,
+    projectPage,
+    projectsList,
+    todoTaskList,
+} from "../lib/constants";
 import { timestampToDate, timestampToDayMonthYear } from "../lib/dateFormatting";
 import { navigate, openModal } from "../lib/router";
 import { addCollaborator } from "./newProject";
@@ -162,4 +174,19 @@ export const checkEmptyProjectList = (): void => {
         const placeholderEl = document.querySelector(".projects__empty-list-placeholder") as HTMLElement;
         if (placeholderEl) projectsList.removeChild(placeholderEl);
     }
+};
+
+export const countProjects = (totalProjects: any): void => {
+    const inProgressProjects = projectsList.children.length;
+
+    inProgressProjectsCount.innerText = `${inProgressProjects}`;
+    completedProjectsCount.innerText = `${inProgressProjects - totalProjects}`;
+};
+
+export const updateTaskOverview = (): void => {
+    const overviewArray = [todoTaskList.children.length, inProgressTaskList.children.length, completedTaskList.children.length];
+
+    updateProject(sessionStorage.getItem("currentProjectId") as string, {
+        taskOverview: overviewArray,
+    });
 };

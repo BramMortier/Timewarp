@@ -4,6 +4,7 @@ import { DocumentData, DocumentSnapshot, QuerySnapshot } from "firebase/firestor
 import { getTask, getTaskNotes } from "../firebase/database/tasks";
 import { completedTaskList, dashboardTaskList, inProgressTaskList, newTaskModal, taskInfo, taskPage, todoTaskList } from "../lib/constants";
 import { navigate, openModal } from "../lib/router";
+import { updateTaskOverview } from "./project";
 // ------------------------------------------- //
 
 export const renderProjectTaskList = (taskList: QuerySnapshot<DocumentData>): void => {
@@ -23,6 +24,7 @@ export const renderProjectTaskList = (taskList: QuerySnapshot<DocumentData>): vo
         }
     });
 
+    updateTaskOverview();
     checkEmptyLists();
 };
 

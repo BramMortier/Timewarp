@@ -28,6 +28,10 @@
         color: var(--blue-900);
         border: 1px solid var(--grey-500);
     }
+
+    &--full-width {
+        width: 100%;
+    }
 }
 
 .icon-btn {

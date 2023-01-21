@@ -18,8 +18,10 @@ import {
     updateDoc,
     deleteDoc,
     getDocs,
+    getCountFromServer,
+    AggregateQuerySnapshot,
 } from "firebase/firestore";
-import { checkEmptyProjectList, renderProjectCard } from "../../components/project";
+import { checkEmptyProjectList, countProjects, renderProjectCard } from "../../components/project";
 import { dashboardTaskList, projectsList } from "../../lib/constants";
 import { db } from "./database";
 import { getProjectTasks } from "./tasks";
@@ -56,6 +58,9 @@ export const deleteProject = async (id: string): Promise<void> => {
 export const getProjects = async (userId: string, render: boolean): Promise<void> => {
     const projectsRef: CollectionReference<DocumentData> = collection(db, "projects");
     const stmt: Query<DocumentData> = query(projectsRef, where("members", "array-contains", userId));
+    let projectCount: AggregateQuerySnapshot<DocumentData>;
+
+    if (render) projectCount = await getCountFromServer(stmt);
 
     onSnapshot(stmt, (projects: QuerySnapshot<DocumentData>) => {
         if (!render) {
@@ -73,6 +78,7 @@ export const getProjects = async (userId: string, render: boolean): Promise<void
                 renderProjectCard(project.id, project.data());
             });
 
+            countProjects(projectCount.data().count);
             checkEmptyProjectList();
         }
     });

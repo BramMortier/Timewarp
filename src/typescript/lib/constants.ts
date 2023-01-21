@@ -28,8 +28,10 @@ export const closeModalBtns = Array.from(document.querySelectorAll(".close-modal
 export const newProjectModal = document.getElementById("new-project-overlay") as HTMLElement;
 export const newTaskModal = document.getElementById("new-task-overlay") as HTMLElement;
 export const newNoteModal = document.getElementById("new-note-overlay") as HTMLElement;
+export const deleteProjectModal = document.getElementById("delete-project-overlay") as HTMLElement;
+export const deleteTaskModal = document.getElementById("delete-task-overlay") as HTMLElement;
 
-export const modals: HTMLElement[] = [newProjectModal, newTaskModal, newNoteModal];
+export const modals: HTMLElement[] = [newProjectModal, newTaskModal, newNoteModal, deleteProjectModal, deleteTaskModal];
 
 export const tiles = Array.from(document.querySelectorAll(".tile")) as HTMLElement[];
 
@@ -45,6 +47,7 @@ export const signUpFormLink = document.getElementById("signup-form-link") as HTM
 export const newProjectForm = document.getElementById("new-project-form") as HTMLFormElement;
 export const newProjectFormErrors = document.getElementById("new-project-form-errors") as HTMLElement;
 export const newProjectSuccesMessage = document.getElementById("new-project-succes-message") as HTMLElement;
+export const projectDeletionMessage = document.getElementById("project-deletion-succes-message") as HTMLElement;
 export const newProjectCollaboratorsList = document.getElementById("new-project-collaborators-list") as HTMLElement;
 export const addCollaboratorBtn = document.getElementById("add-collaborator-btn") as HTMLElement;
 export const createProjectBtn = document.getElementById("create-project-btn") as HTMLElement;
@@ -52,6 +55,7 @@ export const createProjectBtn = document.getElementById("create-project-btn") as
 export const newTaskForm = document.getElementById("new-task-form") as HTMLFormElement;
 export const newTaskFormErrors = document.getElementById("new-task-form-errors") as HTMLElement;
 export const newTaskSuccesMessage = document.getElementById("new-task-succes-message") as HTMLElement;
+export const taskDeletionMessage = document.getElementById("task-deletion-succes-message") as HTMLElement;
 export const newTaskDropdown = document.getElementById("new-task-dropdown") as HTMLElement;
 export const newTaskDropdownList = document.getElementById("new-task-dropdown-list") as HTMLElement;
 export const newTaskDropdownOptions = Array.from(document.querySelectorAll(".form__dropdown-option")) as HTMLElement[];
@@ -75,6 +79,8 @@ export const editProjectBtn = document.getElementById("edit-project-btn") as HTM
 export const deleteProjectBtn = document.getElementById("delete-project-btn") as HTMLElement;
 export const editTaskBtn = document.getElementById("edit-task-btn") as HTMLElement;
 export const deleteTaskBtn = document.getElementById("delete-task-btn") as HTMLElement;
+export const confirmDeleteProjectBtn = document.getElementById("confirm-delete-project-btn") as HTMLElement;
+export const confirmDeleteTaskBtn = document.getElementById("confirm-delete-task-btn") as HTMLElement;
 
 export const newPasswordInput = document.getElementById("new-password-input") as HTMLInputElement;
 export const passwordSecurityBars = document.getElementById("password-security-bars") as HTMLElement;
@@ -84,6 +90,9 @@ export const dashboardTaskList = document.getElementById("dashboard-task-list") 
 export const projectsInProgressBtn = document.getElementById("projects-in-progress-btn") as HTMLElement;
 export const projectsCompletedBtn = document.getElementById("projects-completed-btn") as HTMLElement;
 export const projectsList = document.getElementById("projects-list") as HTMLElement;
+
+export const inProgressProjectsCount = document.getElementById("in-progress-projects-count") as HTMLElement;
+export const completedProjectsCount = document.getElementById("completed-projects-count") as HTMLElement;
 
 export const projectInfo = document.getElementById("project-info") as HTMLElement;
 export const taskInfo = document.getElementById("task-info") as HTMLElement;
