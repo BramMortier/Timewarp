@@ -5,8 +5,8 @@
         <link rel="icon" type="image/svg+xml" href="/vite.svg" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Timewarp</title>
-        <script type="module" crossorigin src="/assets/index-51ba7f56.js"></script>
-        <link rel="stylesheet" href="/assets/index-5d527473.css" />
+      <script type="module" crossorigin src="/assets/index-f99b7077.js"></script>
+      <link rel="stylesheet" href="/assets/index-569efc4a.css">
     </head>
     <body>
         <main>
@@ -123,7 +123,7 @@
                                 <img src="/icons/arrow.svg" alt="arrow icon" />
                             </button>
                             <div class="dashboard__option-info">
-                                <span class="text-xxl bold text-white">12</span>
+                                <span id="in-progress-projects-count" class="text-xxl bold text-white">12</span>
                                 <p class="text-white">In Progress</p>
                             </div>
                         </div>
@@ -133,7 +133,7 @@
                                 <img src="/icons/arrow.svg" alt="arrow icon" />
                             </button>
                             <div class="dashboard__option-info">
-                                <span class="text-xxl bold text-white">23</span>
+                                <span id="completed-projects-count" class="text-xxl bold text-white">23</span>
                                 <p class="text-white">Completed</p>
                             </div>
                         </div>
@@ -523,6 +523,44 @@
                 </div>
             </div>
 
+            <!-- confirm project deletion begin -->
+            <div id="delete-project-overlay" class="new-note overlay">
+                <div class="overlay__content">
+                    <div class="overlay__header">
+                        <h3 class="text-xl">Delete Project</h3>
+                        <button class="close-modal-btn icon-btn icon-btn--secondary">
+                            <img src="/icons/plus.svg" alt="arrow icon" />
+                        </button>
+                    </div>
+                    <div>
+                        <div id="project-deletion-succes-message" class="form__delete mb-sm">
+                            <span class="error text-sm">Deleting Project...</span>
+                        </div>
+                        <h4 class="mb-xxl">Are u sure you want to delete this project?</h4>
+                        <button id="confirm-delete-project-btn" class="btn btn--primary btn--full-width">Delete</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- confirm task deletion begin -->
+            <div id="delete-task-overlay" class="new-note overlay">
+                <div class="overlay__content">
+                    <div class="overlay__header">
+                        <h3 class="text-xl">Delete Task</h3>
+                        <button class="close-modal-btn icon-btn icon-btn--secondary">
+                            <img src="/icons/plus.svg" alt="arrow icon" />
+                        </button>
+                    </div>
+                    <div>
+                        <div id="task-deletion-succes-message" class="form__delete mb-sm">
+                            <span class="error text-sm">Deleting task...</span>
+                        </div>
+                        <h4 class="mb-xxl">Are u sure you want to delete this task?</h4>
+                        <button id="confirm-delete-task-btn" class="btn btn--primary btn--full-width">Delete</button>
+                    </div>
+                </div>
+            </div>
+
             <!-- PAGE TRANSITION -->
 
             <!-- default transition -->
@@ -537,5 +575,7 @@
                 <span class="tile"></span>
             </div>
         </main>
+
+        
     </body>
 </html>

@@ -2,7 +2,16 @@
 // module imports
 import { DocumentData, DocumentSnapshot, QuerySnapshot } from "firebase/firestore";
 import { getTask, getTaskNotes } from "../firebase/database/tasks";
-import { completedTaskList, dashboardTaskList, inProgressTaskList, newTaskModal, taskInfo, taskPage, todoTaskList } from "../lib/constants";
+import {
+    completedTaskList,
+    dashboardTaskList,
+    inProgressTaskList,
+    newTaskForm,
+    newTaskModal,
+    taskInfo,
+    taskPage,
+    todoTaskList,
+} from "../lib/constants";
 import { navigate, openModal } from "../lib/router";
 import { updateTaskOverview } from "./project";
 // ------------------------------------------- //
@@ -115,6 +124,18 @@ export const renderTaskInfo = (data: any): void => {
             <div class="task__progress-option ${data.progressLabel === "Completed" ? "task__progress-option--selected" : ""}">Complete</div>
         </div>
     `;
+};
+
+export const updateTaskForm = async (data: any): Promise<void> => {
+    data = JSON.parse(data);
+
+    console.log(data);
+
+    newTaskForm.taskName.value = data.taskname;
+    newTaskForm.description.value = data.description;
+    newTaskForm.estimate.value = data.timeEstimate == "No estimate" ? "" : data.timeEstimate;
+
+    newTaskForm.setAttribute("data-update", "true");
 };
 
 export const getLabel = (progressState: string): string => {

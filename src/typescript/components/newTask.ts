@@ -1,6 +1,6 @@
 // ------------------------------------------- //
 // module imports
-import { createTask } from "../firebase/database/tasks";
+import { createTask, updateTask } from "../firebase/database/tasks";
 import {
     newTaskChips,
     newTaskDropdown,
@@ -9,9 +9,10 @@ import {
     newTaskForm,
     newTaskFormErrors,
     newTaskSuccesMessage,
+    projectPage,
     taskDeletionMessage,
 } from "../lib/constants";
-import { closeModal } from "../lib/router";
+import { closeModal, navigate } from "../lib/router";
 import { notEmpty } from "../lib/validation";
 // ------------------------------------------- //
 
@@ -34,19 +35,28 @@ export const addTask = async (e: Event): Promise<void> => {
             newTaskFormErrors.innerHTML = "";
             newTaskFormErrors.classList.remove("form__errors--active");
 
-            createTask({
-                projectId: sessionStorage.getItem("currentProjectId") as string,
-                taskname: taskname,
-                description: description,
-                progressLabel: progress,
-                notesCount: 0,
-                timeEstimate: estimate,
-            });
+            if (newTaskForm.getAttribute("data-update") === "true") {
+                updateTask(sessionStorage.getItem("currentTaskId") as string, {
+                    taskname: taskname,
+                    description: description,
+                    timeEstimate: estimate,
+                });
+            } else {
+                createTask({
+                    projectId: sessionStorage.getItem("currentProjectId") as string,
+                    taskname: taskname,
+                    description: description,
+                    progressLabel: progress,
+                    notesCount: 0,
+                    timeEstimate: estimate,
+                });
+            }
 
             newTaskForm.reset();
             showSuccesMessage();
 
             setTimeout(() => {
+                navigate(projectPage);
                 closeModal();
             }, 800);
         } catch {

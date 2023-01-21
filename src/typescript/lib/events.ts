@@ -7,6 +7,7 @@ import { addCollaborator, addProject, showProjectDeleteMessage } from "../compon
 import { addTask, handleDropdownMenu, selectChip, toggleDropdownMenu, showTaskDeleteMessage } from "../components/newTask";
 import { renderProjectInfo, updateProjectForm } from "../components/project";
 import { updateProjectsFilters } from "../components/projectsFilters";
+import { updateTaskForm } from "../components/task";
 import { login, loginWithGoogle, logout, signUp } from "../firebase/auth";
 import { getComments } from "../firebase/database/comments";
 import { deleteProject, getProject, getProjects } from "../firebase/database/projects";
@@ -147,7 +148,8 @@ confirmDeleteProjectBtn.addEventListener("click", async (): Promise<void> => {
 });
 
 editTaskBtn.addEventListener("click", (): void => {
-    console.log("edit task");
+    updateTaskForm(sessionStorage.getItem("currentTaskData") as string);
+    openModal(newTaskModal);
 });
 
 deleteTaskBtn.addEventListener("click", async (): Promise<void> => {
